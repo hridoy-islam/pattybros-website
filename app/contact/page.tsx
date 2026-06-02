@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Mail, Phone, Clock } from "lucide-react";
 import { Hero } from "@/components/shared/Hero";
@@ -10,7 +10,9 @@ import { Button } from "@/components/ui/button";
 
 export default function ContactPage() {
   const { title, subtitle } = contactContent.hero;
-
+ useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // Form State Setup
   const [formData, setFormData] = useState({
     name: "",

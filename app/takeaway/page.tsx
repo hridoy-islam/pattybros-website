@@ -122,7 +122,9 @@ export default function TakeAwayPage() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isMobileCartOpen, setIsMobileCartOpen] = useState(false);
   const [activeStep, setActiveStep] = useState<"ordering" | "checkout" | "success">("ordering");
-
+ useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // Modification Modal States
   const [modifyingItem, setModifyingItem] = useState<MenuItem | null>(null);
   const [selectedExtras, setSelectedExtras] = useState<{ name: string; price: number }[]>([]);

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Flame, Sparkles, Award, ChefHat, Heart, Clock, Beef, Drumstick, Leaf, ArrowUpRight } from "lucide-react";
@@ -84,6 +84,9 @@ const menuData = [
 ];
 
 export default function MenuPage() {
+   useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   return (
     <SmoothScroll>
       <Hero 

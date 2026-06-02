@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, Clock, Users, Phone, Mail, User, CheckCircle } from "lucide-react";
 import { Hero } from "@/components/shared/Hero";
@@ -24,7 +24,9 @@ export default function ReservationPage() {
   
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-
+ useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);

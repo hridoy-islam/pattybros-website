@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,7 +14,9 @@ export default function AboutPage() {
   // Graceful fallback values if content utility isn't fully defined yet
   const title = "Our Story";
   const subtitle = aboutContent?.hero?.subtitle || "Smashed with Passion, Crafted for Purists.";
-
+ useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <SmoothScroll>
       {/* 1. Header Hero Component */}

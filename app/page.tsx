@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect } from "react";
 import { homeContent } from "@/utils/content";
 
 import SmoothScroll from "@/components/shared/smooth-scroll";
@@ -9,11 +12,15 @@ import MenuSection from "@/components/home/MenuSection";
 import FAQ from "@/components/home/FAQ";
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <SmoothScroll>
       <main className="flex flex-col min-h-screen">
         <Hero />
-        <AboutStats/>
+        <AboutStats />
         <MenuSection />
         <GalleryInfoSection />
         <FAQ />
