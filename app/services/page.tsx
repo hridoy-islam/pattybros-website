@@ -2,7 +2,6 @@ import { ServicesHero } from "@/components/services/services-hero";
 import { ServiceSplitSection } from "@/components/services/service-split-section";
 import { WorkingProcess } from "@/components/services/working-process";
 import { FaqsSection } from "@/components/services/faqs-section";
-import { ContactSection } from "@/components/home/contact-section";
 import { servicesContent } from "@/utils/content";
 import { Hero } from "@/components/shared/Hero";
 import { MouseFollower } from "@/components/shared/mouse-follower";

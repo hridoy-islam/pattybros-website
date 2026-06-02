@@ -1,4 +1,3 @@
-import { ContactSection } from "@/components/home/contact-section";
 import { Hero } from "@/components/shared/Hero";
 import { MouseFollower } from "@/components/shared/mouse-follower";
 import SmoothScroll from "@/components/shared/smooth-scroll";
@@ -13,7 +12,6 @@ export default function ContactPage() {
       <Hero title={title} subtitle={subtitle} />
 
  
-        <ContactSection />
     
     </SmoothScroll>
   );

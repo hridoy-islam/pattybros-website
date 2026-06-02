@@ -5,7 +5,6 @@ import { careerContent } from "@/utils/content";
 import { CareerHero } from "@/components/careers/career-hero";
 import { JobFilters } from "@/components/careers/job-filters";
 import { JobListings } from "@/components/careers/job-listings";
-import { Cta } from "@/components/home/cta";
 import SmoothScroll from "@/components/shared/smooth-scroll";
 import { MouseFollower } from "@/components/shared/mouse-follower";
 import { Hero } from "@/components/shared/Hero";
