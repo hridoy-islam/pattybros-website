@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 222.2 84% 4.9%;
+
+    --primary: 39 85% 51%;
+    --primary-foreground: 359 88% 59%;
+
+    --secondary: 0 0% 26%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 32 94% 50%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --foreground: 210 40% 98%;
+    --background: 0 0% 0%;
+    --primary: 39 85% 51%;
+    --primary-foreground: 359 88% 59%;
+    --secondary: 0 0% 26%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading tracking-tight;
+  }
+
+  section {
+    @apply py-20 md:py-32;
+  }
+
+  .horizontal-scrollbar::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .horizontal-scrollbar::-webkit-scrollbar-track {
+    @apply bg-slate-200 rounded-full;
+  }
+
+  .horizontal-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
+  }
+}
