@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 // Smooth Time-based Count Up Hook for stats
 function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
@@ -42,7 +43,7 @@ export default function AboutStats() {
     { target: 23, suffix: "k", label: "Positive Feedback" },
     { target: 8, suffix: "+", label: "Awards and Honors" },
   ];
-
+  const router = useRouter();
   return (
     <section className="bg-white text-black py-24 relative overflow-hidden select-none">
       
@@ -139,7 +140,7 @@ export default function AboutStats() {
           </h3>
 
           {/* Call to action Button with exact visual color weight */}
-          <Button className=" text-white px-9 py-6 rounded-full text-sm font-bold uppercase tracking-wider mt-4 transition-colors duration-300 shadow-md">
+          <Button onClick={() => router.push("/menu")} className=" text-white px-9 py-6 rounded-full text-sm font-bold uppercase tracking-wider mt-4 transition-colors duration-300 shadow-md">
             Get Started
           </Button>
         </div>
