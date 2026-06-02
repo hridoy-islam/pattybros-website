@@ -1,11 +1,11 @@
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 
 export const siteConfig = {
-  name: "Cyberpeers",
-  description: "Cyberpeers is aiming to deliver bespoke solutions by building applications for web and mobile with Digital Marketing.",
-  address: "9 Town Quay, Barking IG11 7BZ, United Kingdom",
-  phone: "+44 020 8090 4806",
-  email: "contact@cyberpeers.co.uk",
+  name: "Patty Bro's",
+  description: "Patty Bro's is a family-friendly restaurant offering delicious meals in a warm and welcoming atmosphere.",
+  address: "United Kingdom",
+  phone: "",
+  email: "demo@pattybros.co.uk",
   
   navItems: [
     { label: "Home", href: "/" },

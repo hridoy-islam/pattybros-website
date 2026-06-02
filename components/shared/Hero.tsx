@@ -1,101 +1,87 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 interface HeroProps {
-  badgeText?: string;
-  title: string;
-  subtitle: string;
-  buttonText?: string;
-  buttonHref?: string;
+  title: string; // Pass "Contact Us", "Our Menu", etc.
+  subtitle?: string; // Optional text fallback
+  badgeText?: string; // Retained if needed for structure
 }
 
-export function Hero({
-  badgeText = "", // Default fallback
-  title,
-  subtitle,
-  buttonText = "Contact Us",
-  buttonHref = "/contact",
-}: HeroProps) {
+export function Hero({ title, subtitle, badgeText }: HeroProps) {
+  const secondaryBreadcrumb = title || "Contact Us";
+
   return (
-<section className="relative pt-44 md:pt-52 pb-24 md:pb-32 bg-secondary text-center overflow-hidden border-0">
-      
-      {/* --- BACKGROUND EFFECTS (From Cta) --- */}
-      
-      {/* 1. Subtle Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
+    <section className="relative w-full h-[360px] md:h-[400px] flex items-center justify-center overflow-hidden bg-[#c92127] text-white select-none">
+      {/* ==================== BACKGROUND IMAGE LAYER ==================== */}
+      <div className="absolute inset-0 z-0 w-full h-full">
+        <Image
+          src="/hero1.jpg" // Your background food/restaurant texture asset
+          alt={title}
+          fill
+          className="object-cover object-center pointer-events-none"
+          priority
+        />
+        {/* Exact Red Branding Mask Filter (Matches image_5582ca.jpg perfectly) */}
+        <div className="absolute inset-0 bg-primary-foreground/80 " />
+        <div className="absolute inset-0 bg-black/35 mix-blend-overlay" />
+      </div>
 
-      {/* 2. Center Glow Pulse (Converted to Framer Motion) */}
-      <motion.div 
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.4, 0.6, 0.4] 
-        }}
-        transition={{ 
-          duration: 4, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
-        }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/40 blur-[120px] rounded-full pointer-events-none" 
-      />
-
-      {/* --- CONTENT --- */}
-      <div className="container relative z-10 ">
-        <motion.div 
-          initial={{ scale: 0.9, opacity: 0, y: 30 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto text-center flex flex-col items-center"
+      {/* ==================== CENTERED INNER CONTENT ==================== */}
+      <div className="container relative z-10 mx-auto  text-center mt-8">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="flex flex-col items-center justify-center space-y-2"
         >
-          
-          {/* Badge / Pill */}
-          {badgeText && (
-            <div className="inline-flex items-center rounded-full border border-slate-700 bg-slate-800/50 px-3 py-1 text-sm font-medium text-slate-300 backdrop-blur-sm mb-8">
-              <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
-              {badgeText}
-            </div>
-          )}
-
-          {/* Title with Gradient (Swapped to h1 for SEO) */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 mb-6 leading-[1.1]">
+          {/* Main Title Block - Extra Compressed, Tall and Bold Uppercase */}
+          <h1 className="text-5xl md:text-6xl font-extrabold uppercase tracking-tight text-white  scale-y-110 select-none">
             {title}
           </h1>
-          
-          {/* Subtitle */}
-          <p className="text-lg md:text-2xl font-medium text-white mb-10 max-w-4xl leading-relaxed mx-auto">
-            {subtitle}
-          </p>
-          
-          {/* Button Group */}
-          {buttonText && buttonHref && (
-            <div className="flex flex-col sm:flex-row items-center gap-4">
-              {/* Added 'group' for the arrow hover effect */}
-              <Link href={buttonHref} className="group inline-block">
-                <Button size="xl">
-                  {buttonText}
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                </Button>
-              </Link>
-            </div>
-          )}
 
+          {/* Micro Breadcrumb Navigation Bar */}
+          <div className="flex items-center gap-2.5 text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-white/90 pt-1">
+            <Link
+              href="/"
+              className="hover:text-amber-400 transition-colors duration-200"
+            >
+              <h2>Home</h2>
+            </Link>
+
+            {/* The Specific Gold/Amber Divider Dash from Mockup */}
+            <span className="text-amber-400 font-black">—</span>
+
+            <span className="text-white">
+              <h2>{secondaryBreadcrumb}</h2>
+            </span>
+          </div>
         </motion.div>
       </div>
 
-      {/* --- BOTTOM SVG WAVE (From AboutHero) --- */}
-<div className="absolute bottom-[-2px] left-0 w-full overflow-hidden leading-none">
+      {/* ==================== BOTTOM DECORATIVE CURVED LAYERS ==================== */}
+      {/* Re-engineered to exactly match the dipping dual-wave visual slopes */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none w-full translate-y-[4px]">
         <svg
-          viewBox="0 0 1200 120"
+          viewBox="0 0 1440 160"
+          fill="none"
+          className="w-full h-[55px] md:h-[75px]"
           preserveAspectRatio="none"
-          className="block w-full h-[60px] md:h-[100px] fill-background"
         >
-          <path d="M0,0 C300,130 900,130 1200,0 L1200,120 L0,120 Z" />
+          {/* Top Layer: Semi-transparent White Accent Slope */}
+          <path
+            d="M0,90 Q360,150 720,110 T1440,70 L1440,160 L0,160 Z"
+            fill="rgba(255, 255, 255, 0.25)"
+          />
+          {/* Bottom Layer: Solid Matte Section Cover */}
+          <path
+            d="M0,120 Q360,160 720,135 T1440,100 L1440,160 L0,160 Z"
+            fill="#ffffff"
+          />
         </svg>
       </div>
-
     </section>
   );
 }

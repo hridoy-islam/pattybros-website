@@ -6,6 +6,7 @@ import AboutStats from "@/components/home/AboutStats";
 import ChefSection from "@/components/home/ChefSection";
 import GalleryInfoSection from "@/components/home/GalleryInfoSection";
 import MenuSection from "@/components/home/MenuSection";
+import FAQ from "@/components/home/FAQ";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <AboutStats/>
         <MenuSection />
         <GalleryInfoSection />
+        <FAQ />
       </main>
     </SmoothScroll>
   );

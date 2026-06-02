@@ -3,126 +3,168 @@
 import Link from "next/link";
 import Image from "next/image";
 import { siteConfig } from "@/utils/site-data";
-import { ArrowRight, MapPin, Phone, Mail } from "lucide-react";
+import { 
+  Megaphone, 
+  Mail, 
+  MapPin, 
+  Clock, 
+  ChevronUp, 
+  Facebook, 
+  Twitter, 
+  Youtube, 
+  Linkedin 
+} from "lucide-react";
+
+const restaurantNavItems = [
+  { label: "Home", href: "/" },
+  { label: "Our Menu", href: "/menu" },
+  { label: "Reservation", href: "/reservation" },
+  { label: "Click & Collect", href: "/takeaway" },
+  { label: "About Us", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-secondary text-white pt-20 pb-10 overflow-hidden">
-      <div className="container ">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          
-          {/* Brand Column */}
-          <div className="space-y-8">
-            <Link href="/" className="block relative h-12 w-48">
-              {/* Ensure image exists in /public */}
-              <Image
-                src="/cyberpeers.png"
-                alt="Cyberpeers Logo"
-                fill
-                className="object-contain object-left brightness-0 invert" 
-                priority
-              />
-            </Link>
-            <p className="text-white text-[15px] leading-relaxed font-medium pr-4 opacity-90">
-              {siteConfig.description}
-            </p>
-            
-            <div className="space-y-5">
-              <h4 className="text-white text-lg font-black tracking-tight uppercase ">
-                Follow Us On
-              </h4>
-              <div className="flex gap-4">
-                {siteConfig.socials.map((social, i) => (
-                  <Link 
-                    key={i} 
-                    href={social.href}
-                    target="_blank"
-                    className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center transition-all hover:bg-primary hover:border-primary hover:scale-110"
-                  >
-                    <social.icon size={18} className="text-white" />
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Dynamic Link Columns */}
-         {siteConfig.footerNav.map((section) => (
-  <div key={section.title} className="space-y-6 lg:pl-8">
-    <h4 className="text-white font-bold text-lg tracking-wider uppercase opacity-90">
-      {section.title}
-    </h4>
-    <ul className="space-y-3">
-      {section.items.map((item) => (
-        <li key={item.label}>
-          <Link
-            href={item.href}
-            className="group flex items-center gap-3 text-white hover:text-white transition-colors duration-300"
-          >
-            {/* The Morphing Indicator */}
-            <div className="relative flex items-center">
-              {/* The Dot (Default state) */}
-              <span className="h-1.5 w-1.5 rounded-full bg-slate-600 transition-all duration-300 group-hover:w-8 group-hover:bg-primary" />
-              
-             
-            </div>
-
-            <span className="text-md font-medium transition-transform duration-300 group-hover:translate-x-1">
-              {item.label}
-            </span>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </div>
-))}
-
-          {/* Contact Info Column */}
-          <div className="space-y-8">
-            <h4 className="text-primary text-xl font-black uppercase tracking-tight">
-              Get In Touch
-            </h4>
-            <ul className="space-y-6">
-              <li className="flex gap-4 group">
-                <div className="mt-1 w-10 h-10 shrink-0 border border-white/10 flex items-center justify-center rounded-xl group-hover:bg-primary group-hover:border-primary transition-all">
-                   <MapPin size={20} className="text-primary group-hover:text-white" />
-                </div>
-                <div>
-                   <p className="text-white font-black mb-1 uppercase tracking-widest text-[10px] opacity-70">Location</p>
-                   <span className="text-[14px] font-bold text-white">{siteConfig.address}</span>
-                </div>
-              </li>
-              <li className="flex gap-4 group">
-                <div className="mt-1 w-10 h-10 shrink-0 border border-white/10 flex items-center justify-center rounded-xl group-hover:bg-primary group-hover:border-primary transition-all">
-                   <Phone size={20} className="text-primary group-hover:text-white" />
-                </div>
-                <div>
-                   <p className="text-white font-black mb-1 uppercase tracking-widest text-[10px] opacity-70">Phone</p>
-                   <span className="text-[14px] font-bold text-white">{siteConfig.phone}</span>
-                </div>
-              </li>
-              <li className="flex gap-4 group">
-                <div className="mt-1 w-10 h-10 shrink-0 border border-white/10 flex items-center justify-center rounded-xl group-hover:bg-primary group-hover:border-primary transition-all">
-                   <Mail size={20} className="text-primary group-hover:text-white" />
-                </div>
-                <div>
-                   <p className="text-white font-black mb-1 uppercase tracking-widest text-[10px] opacity-70">Email</p>
-                   <span className="text-[14px] font-bold text-white">{siteConfig.email}</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="mt-20 pt-10 border-t border-white/10 text-center">
-          <p className="text-sm font-medium text-white tracking-wide uppercase  ">
-            &copy; {currentYear} All Rights Reserved By Zuhayr Consultancy Limited T/A Cyberpeers
-          </p>
-        </div>
+    <footer className="relative bg-zinc-950 text-zinc-400 pt-24 overflow-hidden select-none">
+      
+      {/* Pattern Background Layers */}
+      <div className="absolute inset-0 pointer-events-none opacity-30">
+        {/* Diagonal Line Pattern */}
+        <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay bg-[linear-gradient(45deg,#fff_25%,transparent_25%,transparent_75%,#fff_75%,#fff),linear-gradient(45deg,#fff_25%,transparent_25%,transparent_75%,#fff_75%,#fff)] bg-[size:20px_20px] bg-[position:0_0,10px_10px]" />
+        
+        {/* Dot Pattern */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fff_1px,transparent_1px)] bg-[size:24px_24px]" />
+        
+        {/* Crosshatch Pattern */}
+        <div className="absolute inset-0 opacity-[0.04] bg-[repeating-linear-gradient(45deg,#fff_0px,#fff_2px,transparent_2px,transparent_8px),repeating-linear-gradient(135deg,#fff_0px,#fff_2px,transparent_2px,transparent_8px)]" />
+        
+        {/* Subtle Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/50" />
       </div>
+
+      <div className="container mx-auto  relative z-10">
+        
+        {/* ==================== UPPER FEATURE COLUMN INFO GRID ==================== */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 text-center pb-20 border-b border-zinc-900">
+          
+          {/* Column 1: About Restaurant */}
+          <div className="flex flex-col items-center space-y-4 group">
+            <div className="text-primary transition-transform duration-300 group-hover:scale-110">
+              <Megaphone className="w-10 h-10 stroke-[1.5]" />
+            </div>
+            <h4 className="text-white font-black text-sm uppercase tracking-[0.15em]">
+              About Restaurant
+            </h4>
+            <h3 className="text-zinc-400 text-sm max-w-xs leading-relaxed font-medium">
+              Enjoy a wonderful food and cafe experience
+            </h3>
+          </div>
+
+          {/* Column 2: Let's Talk */}
+          <div className="flex flex-col items-center space-y-4 group">
+            <div className="text-primary transition-transform duration-300 group-hover:scale-110">
+              <Mail className="w-10 h-10 stroke-[1.5]" />
+            </div>
+            <h4 className="text-white font-black text-sm uppercase tracking-[0.15em]">
+              Let's Talk
+            </h4>
+            <div className="text-zinc-400 text-sm font-medium space-y-0.5">
+              <h4 className="hover:text-primary transition-colors cursor-pointer">{siteConfig.email}</h4>
+              <h4 className="hover:text-primary transition-colors cursor-pointer">{siteConfig.phone}</h4>
+            </div>
+          </div>
+
+          {/* Column 3: Let's Meet */}
+          <div className="flex flex-col items-center space-y-4 group">
+            <div className="text-primary transition-transform duration-300 group-hover:scale-110">
+              <MapPin className="w-10 h-10 stroke-[1.5]" />
+            </div>
+            <h4 className="text-white font-black text-sm uppercase tracking-[0.15em]">
+              Let's Meet
+            </h4>
+            <h4 className="text-zinc-400 text-sm max-w-xs leading-relaxed font-medium">
+              {siteConfig.address}
+            </h4>
+          </div>
+
+          {/* Column 4: Opening Hours */}
+          <div className="flex flex-col items-center space-y-4 group">
+            <div className="text-primary transition-transform duration-300 group-hover:scale-110">
+              <Clock className="w-10 h-10 stroke-[1.5]" />
+            </div>
+            <h4 className="text-white font-black text-sm uppercase tracking-[0.15em]">
+              Opening Hours
+            </h4>
+            <div className="text-zinc-400 text-sm font-medium space-y-0.5">
+              <h4>Monday - Sunday</h4>
+              <h4 className="text-zinc-300 font-bold">9:00AM to 11:30PM</h4>
+            </div>
+          </div>
+
+        </div>
+
+        {/* ==================== MIDDLE RESTAURANT NAVIGATION LINK MATRIX ==================== */}
+        <div className="py-10 flex flex-wrap justify-center gap-x-10 gap-y-4 border-b border-zinc-900/60 text-xs uppercase tracking-[0.2em] font-extrabold">
+          {restaurantNavItems.map((nav, index) => (
+            <Link 
+              key={index} 
+              href={nav.href} 
+              className="text-zinc-400 hover:text-primary transition-colors duration-200"
+            >
+              <h2>
+
+              {nav.label}
+              </h2>
+            </Link>
+          ))}
+        </div>
+
+        {/* ==================== LOWER SUB-FOOTER CONTROL PANEL ==================== */}
+        <div className="py-12 flex flex-col lg:flex-row items-center justify-between gap-8">
+          
+          {/* Center Left Block: Copyright statement */}
+          <div className="text-xs uppercase tracking-widest font-bold text-zinc-500 order-2 lg:order-2">
+            &copy; Copyright {currentYear} <span className="text-primary font-black">Patty Bro's</span>
+          </div>
+
+          {/* Right Block: Core Social Media Icons System */}
+          <div className="flex items-center gap-2 order-4 lg:order-4">
+            {[
+              { icon: Facebook, href: "#" },
+              { icon: Twitter, href: "#" },
+              { icon: Youtube, href: "#" },
+              { icon: Linkedin, href: "#" }
+            ].map((soc, i) => (
+              <a
+                key={i}
+                href={soc.href}
+                className="w-9 h-9 bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all flex items-center justify-center rounded-none text-sm border border-zinc-800/40"
+              >
+                <soc.icon className="w-4 h-4 fill-current stroke-0" />
+              </a>
+            ))}
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* Floating Action Element: Smooth back-to-top trigger button (Primary-Foreground Red) */}
+      <button
+        onClick={scrollToTop}
+        className="absolute bottom-10 right-6 md:right-12 z-50 w-12 h-12 bg-primary-foreground text-white flex items-center justify-center rounded-full shadow-2xl transition-all duration-300 hover:bg-primary-foreground/90 hover:-translate-y-1 group"
+        aria-label="Scroll back to top"
+      >
+        <ChevronUp className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+      </button>
+
     </footer>
   );
 }

@@ -11,7 +11,7 @@ function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
 
   useEffect(() => {
     let startTime: number | null = null;
-    const duration = 2000; // Animation duration in ms
+    const duration = 5000; // Animation duration in ms
 
     const animate = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
@@ -68,14 +68,39 @@ export default function AboutStats() {
         />
       </div>
 
-      {/* Top Right Rotating Badge Graphic */}
-      <div className="absolute right-6 top-6 w-32 h-32 animate-[spin_20s_linear_infinite] pointer-events-none z-10">
-        <Image 
-          src="/badge-doodle.png" 
-          alt="Signatures Dine Sip Eat Badge" 
-          fill 
-          className="object-contain" 
-        />
+      {/* REPLACED: Pure SVG Infinitely Rotating Text & Pizza Component */}
+      <div className="hidden md:block absolute right-[3%] top-[5%] w-44 h-44 pointer-events-none select-none z-10">
+        <div className="relative w-full h-full flex items-center justify-center">
+          
+         <div className="absolute w-[60px] h-[60px] z-20 flex items-center justify-center">
+      <Image 
+        src="/burger-doodle.png" // Replace with your target image path (e.g., /pizza-doodle.png or /pizza-icon.png)
+        alt="Centerpiece Icon"
+        width={60}
+        height={60}
+        className="object-contain"
+      />
+    </div>
+
+          {/* Outer Infinite Rotating Text Path */}
+          <div className="absolute inset-0 animate-[spin_25s_linear_infinite]">
+            <svg viewBox="0 0 200 200" className="w-full h-full">
+              <defs>
+                {/* Hidden circle track guiding the letters */}
+                <path
+                  id="textCircle"
+                  d="M 100, 100 m -70, 0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0"
+                />
+              </defs>
+              <text className="text-[13px] font-bold fill-neutral-800 tracking-[0.16em] uppercase font-sans">
+                <textPath href="#textCircle" startOffset="0%">
+                  SIGNATURES • DINE • SIP • EAT • GOURMET • CUISINE •
+                </textPath>
+              </text>
+            </svg>
+          </div>
+
+        </div>
       </div>
 
       {/* Middle Right Floating Pizza Slice Doodle */}
@@ -97,25 +122,24 @@ export default function AboutStats() {
           <div className="flex items-center justify-center gap-2 text-primary-foreground font-bold tracking-widest uppercase text-xs">
             <span className="w-7 h-[2px] bg-primary-foreground"></span>
             <h4>
-
-            Best Food For Your Family
+              Best Food For Your Family
             </h4>
           </div>
 
           {/* Main Typography Header matching graphic text font dynamics */}
-          <h2 className="text-4xl md:text-5xl font-black uppercase leading-[1.15] tracking-tight text-neutral-900 ">
+          <h2 className="text-2xl md:text-5xl font-black uppercase leading-[1.15] tracking-tight text-neutral-900 ">
             True & Memorable Tasta Made <br className="hidden md:inline" /> With Love and Tradition
           </h2>
 
           {/* Body Block Paragraph matching mockup content */}
-          <h4 className="text-gray-500 text-sm md:text-lg leading-relaxed max-w-6xl mx-auto font-medium">
+          <h3 className="text-gray-600 text-xs md:text-sm leading-relaxed max-w-6xl mx-auto font-medium">
             Restaurant food dolor sit amet, consectetur adipiscing elit, sed do eiusmod eius modi 
             tempora incidunt ut labore et dolore magnam aliquam quaerat eius modi tempora incidunt 
             ut labore et dolore magnam aliquam quaerat olore magna aliqua. Ut enim ad minim veniam
-          </h4>
+          </h3>
 
           {/* Call to action Button with exact visual color weight */}
-          <Button className=" text-white px-9 py-6 rounded-full text-xs font-bold uppercase tracking-wider mt-4 transition-colors duration-300 shadow-md">
+          <Button className=" text-white px-9 py-6 rounded-full text-sm font-bold uppercase tracking-wider mt-4 transition-colors duration-300 shadow-md">
             Get Started
           </Button>
         </div>
@@ -128,12 +152,12 @@ export default function AboutStats() {
               className="space-y-1 group cursor-pointer transition-transform duration-300 hover:-translate-y-1"
             >
               {/* Animated Target Tracker number display */}
-              <h3 className="text-5xl md:text-6xl font-black tracking-tighter text-neutral-900">
+              <h3 className="text-5xl md:text-6xl font-black tracking-tighter text-black group-hover:text-primary-foreground transition-colors duration-600">
                 <Counter target={stat.target} suffix={stat.suffix} />
               </h3>
               
               {/* Stat Metadata Label matching style values */}
-              <p className="text-gray-400 text-[11px] font-bold uppercase tracking-widest pt-1">
+              <p className="text-gray-700 text-[11px] font-bold uppercase tracking-widest pt-1">
                 {stat.label}
               </p>
             </div>

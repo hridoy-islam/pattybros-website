@@ -29,12 +29,11 @@ export default function Hero() {
         { scale: 1.1, opacity: 0 },
         { scale: 1, opacity: 1, duration: 1.5, ease: "power2.out" }
       )
-      // Replaced IDs with classes for stable querying
       .fromTo(
         ".hero-eyebrow",
         { opacity: 0, y: 30 },
         { opacity: 1, y: 0, duration: 0.8 },
-        "-=1" // Start earlier
+        "-=1"
       )
       .fromTo(
         ".hero-heading-line",
@@ -56,14 +55,14 @@ export default function Hero() {
       )
       .fromTo(
         decorativeCircleRef.current,
-        { opacity: 0, scale: 0.5, rotation: -90 },
+        { opacity: 0, scale: 0.5, },
         { opacity: 1, scale: 1, rotation: 0, duration: 1.2, ease: "back.out(1.5)" },
         "-=0.8"
       );
 
       // 2. Scroll Parallax for Background
       gsap.to(bgRef.current, {
-        yPercent: 30,
+        yPercent: 20,
         ease: "none",
         scrollTrigger: {
           trigger: heroRef.current,
@@ -85,59 +84,55 @@ export default function Hero() {
         },
       });
 
-      // 4. Continuous slow rotation for the badge
-      if (decorativeCircleRef.current) {
-        gsap.to(decorativeCircleRef.current, {
-          rotation: 360,
-          duration: 20,
-          repeat: -1,
-          ease: "linear", // Smooth continuous spin
-        });
-      }
+      
 
     }, heroRef);
 
-    // Cleanup ensures no duplicate animations on hot-reload
     return () => ctx.revert();
   }, []);
 
   return (
     <section 
       ref={heroRef} 
-      className="relative w-full h-[100vh] flex items-center overflow-hidden bg-black text-white"
+      className="relative w-full h-[100vh] flex items-center overflow-hidden bg-zinc-950 text-white select-none"
     >
       {/* Background Layer */}
-      <div ref={bgRef} className="absolute inset-0 z-0 h-[120%] w-full top-[10%]">
+      <div ref={bgRef} className="absolute inset-0 z-0 h-[115%] w-full -top-[5%]">
         <Image
-          src="/hero1.jpg" // Make sure this path is correct in your public folder
+          src="/hero1.jpg" 
           alt="Delicious Food"
           fill
           className="object-cover brightness-50" 
           priority
         />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
+        {/* Advanced Multi-Stage Gradient Overlay Matrix */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
       </div>
 
       {/* Content Layer */}
-      <div className="container relative z-10 mx-auto ">
+      <div className="container relative z-10 mx-auto px-6 sm:px-12 mt-10">
         <div ref={textRef} className="max-w-4xl space-y-6 lg:space-y-8">
           
-         
+          {/* Subtle Premium Header Accent */}
+          <div className="hero-eyebrow flex items-center gap-3 text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-primary">
+            <span className="w-6 h-[1px] bg-primary block" />
+            <h4>Welcome To Premium Flavors</h4>
+          </div>
 
-          <h1 className="text-5xl md:text-7xl  font-black uppercase leading-[1.1] tracking-tight">
+          <h1 className="text-5xl md:text-7xl font-black uppercase leading-[1.05] tracking-tight">
             <span className="hero-heading-line block">Delicious Food &</span>
             <span className="hero-heading-line block text-primary">Memorable Dining</span>
           </h1>
 
-          <h3 className="hero-subtitle text-lg md:text-xl text-white font-medium leading-relaxed max-w-2xl">
+          <h3 className="hero-subtitle text-base md:text-lg text-zinc-100 font-medium leading-relaxed max-w-xl">
             Indulge in a fusion of traditional recipes and contemporary flair, crafted by master chefs using the freshest locally sourced ingredients. 
           </h3>
 
-          <div ref={buttonsRef} className="flex flex-col sm:flex-row items-start sm:items-center gap-5 pt-6 lg:pt-8">
+          <div ref={buttonsRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4 max-w-md sm:max-w-none">
             <Link href="/order">
               <Button
-                className="bg-primary-foreground  text-white font-bold uppercase tracking-wider px-10 py-7 text-base rounded-sm transition-colors duration-300"
+                className="w-full sm:w-auto bg-primary-foreground hover:bg-primary-foreground/95 uppercase tracking-wider px-10 py-7 text-sm rounded-none transition-transform duration-300 hover:-translate-y-0.5"
               >
                 Order Now!
               </Button>
@@ -145,7 +140,7 @@ export default function Hero() {
             <Link href="/menu">
               <Button
                 variant="outline"
-                className="border-white/30 text-white hover:text-white hover:bg-primary font-bold uppercase tracking-wider px-10 py-7 text-base rounded-sm transition-colors duration-300 bg-transparent"
+                className="w-full sm:w-auto border-white/20 text-white hover:text-zinc-950 hover:bg-white font-black uppercase tracking-wider px-10 py-7 text-sm rounded-none bg-transparent transition-all duration-300 hover:-translate-y-0.5"
               >
                 Explore Menu
               </Button>
@@ -154,13 +149,15 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Decorative Rotating Badge */}
+      {/* Animated Badge Layer */}
       <div 
         ref={decorativeCircleRef} 
-        className="absolute top-32 right-20 z-20 w-32 h-32 hidden lg:flex items-center justify-center rounded-full border border-dashed border-primary/50"
+        className="absolute bottom-24 right-12 md:right-24 z-30 w-36 h-36 hidden lg:flex items-center justify-center rounded-full border border-dashed border-primary/40 bg-black/40 backdrop-blur-md shadow-2xl"
       >
-        <div className="text-primary font-bold text-xs uppercase text-center tracking-widest leading-loose">
-          Since <br/> <span className="text-lg">1995</span>
+        <div className="text-primary font-medium text-[10px] uppercase text-center tracking-[0.25em] leading-relaxed">
+          Established<br/> 
+          <span className="text-2xl font-black text-white tracking-normal my-0.5 block font-serif">1995</span>
+          <span className="text-[9px] text-zinc-400 block tracking-widest lowercase italic">heritage standard</span>
         </div>
       </div>
     </section>
