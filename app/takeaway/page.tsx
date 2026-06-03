@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Hero } from "@/components/shared/Hero";
 import SmoothScroll from "@/components/shared/smooth-scroll";
+import { Button } from "@/components/ui/button";
 
 // --- CORE INTERFACES ---
 interface MenuItem {
@@ -286,12 +287,12 @@ export default function TakeAwayPage() {
                 </div>
               </div>
 
-              <button
+              <Button
                 onClick={resetOrder}
                 className="bg-zinc-900 text-white font-bold px-8 py-3 rounded-full hover:bg-zinc-800"
               >
                 Place Another Order
-              </button>
+              </Button>
             </motion.div>
           ) : (
             /* ORDERING / CHECKOUT */
@@ -303,7 +304,7 @@ export default function TakeAwayPage() {
                 {/* Category Tabs */}
                 <div className="flex gap-2 overflow-x-auto pb-2 sticky top-0 bg-white z-10 pt-2">
                   {MENU_CATEGORIES.map(category => (
-                    <button
+                    <Button
                       key={category}
                       onClick={() => setCurrentCategory(category)}
                       className={`px-4 py-2 text-xs font-bold rounded-full whitespace-nowrap transition-all ${
@@ -313,7 +314,7 @@ export default function TakeAwayPage() {
                       }`}
                     >
                       {category}
-                    </button>
+                    </Button>
                   ))}
                 </div>
 
@@ -328,12 +329,12 @@ export default function TakeAwayPage() {
                     <p className="text-zinc-400 text-sm mb-6">Any burger + fries + drink</p>
                     
                     {!isBuildingMeal ? (
-                      <button 
+                      <Button 
                         onClick={() => setIsBuildingMeal(true)}
                         className="bg-yellow-400 text-zinc-900 font-bold px-6 py-3 rounded-full hover:bg-yellow-300"
                       >
                         Build Your Meal
-                      </button>
+                      </Button>
                     ) : (
                       <div className="space-y-4 bg-zinc-800 p-4 rounded-2xl">
                         <div>
@@ -374,19 +375,19 @@ export default function TakeAwayPage() {
                           </select>
                         </div>
                         <div className="flex gap-2">
-                          <button 
+                          <Button 
                             onClick={() => setIsBuildingMeal(false)}
                             className="flex-1 bg-zinc-700 text-white font-bold py-2 rounded-full text-sm"
                           >
                             Cancel
-                          </button>
-                          <button 
+                          </Button>
+                          <Button 
                             onClick={addMealDealToCart}
                             disabled={!mealSelection.burger || !mealSelection.fries || !mealSelection.drink}
                             className="flex-1 bg-yellow-400 text-zinc-900 font-bold py-2 rounded-full text-sm disabled:opacity-50"
                           >
                             Add Meal
-                          </button>
+                          </Button>
                         </div>
                       </div>
                     )}
@@ -414,12 +415,12 @@ export default function TakeAwayPage() {
                         </div>
                         <div className="flex items-center justify-between mt-2">
                           <span className="font-bold text-lg">£{item.price.toFixed(2)}</span>
-                          <button 
+                          <Button 
                             onClick={() => openCustomizer(item)}
                             className="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-red-700"
                           >
                             Add to Cart
-                          </button>
+                          </Button>
                         </div>
                       </div>
                     </div>
@@ -728,9 +729,9 @@ export default function TakeAwayPage() {
             >
               <div className="p-4 border-b flex justify-between items-center">
                 <h3 className="font-bold text-lg">Your Order</h3>
-                <button onClick={() => setIsMobileCartOpen(false)}>
+                <Button onClick={() => setIsMobileCartOpen(false)}>
                   <X className="w-5 h-5" />
-                </button>
+                </Button>
               </div>
 
               <div className="flex-1 overflow-y-auto p-4 space-y-4">
@@ -754,13 +755,13 @@ export default function TakeAwayPage() {
                     <div className="flex flex-col items-end gap-2">
                       <span className="font-bold">£{getItemTotal(item).toFixed(2)}</span>
                       <div className="flex items-center gap-2 bg-zinc-100 rounded-full px-1">
-                        <button onClick={() => updateQuantity(item.cartId, -1)} className="p-1">
+                        <Button onClick={() => updateQuantity(item.cartId, -1)} className="p-1">
                           <Minus className="w-3 h-3" />
-                        </button>
+                        </Button>
                         <span className="font-bold text-sm">{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.cartId, 1)} className="p-1">
+                        <Button onClick={() => updateQuantity(item.cartId, 1)} className="p-1">
                           <Plus className="w-3 h-3" />
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -773,7 +774,7 @@ export default function TakeAwayPage() {
                   <span className="text-xl font-bold">£{totalBasketCost.toFixed(2)}</span>
                 </div>
                 {activeStep === "ordering" ? (
-                  <button
+                  <Button
                     onClick={() => {
                       setActiveStep("checkout");
                       setIsMobileCartOpen(false);
@@ -781,14 +782,14 @@ export default function TakeAwayPage() {
                     className="w-full bg-red-600 text-white font-bold py-3 rounded-full"
                   >
                     Checkout
-                  </button>
+                  </Button>
                 ) : (
-                  <button
+                  <Button
                     onClick={() => setIsMobileCartOpen(false)}
                     className="w-full bg-zinc-200 text-zinc-700 font-bold py-3 rounded-full"
                   >
                     Close
-                  </button>
+                  </Button>
                 )}
               </div>
             </motion.div>

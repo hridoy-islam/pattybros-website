@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://patty-bros.co.uk"),
 
   title: {
-    default: "Patty Bros | Smash Burger Restaurant in London",
-    template: "%s | Patty Bros",
+    default: "Patty Bro's | Smash Burger Restaurant in London",
+    template: "%s | Patty Bro's",
   },
 
   description:

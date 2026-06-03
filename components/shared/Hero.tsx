@@ -14,7 +14,7 @@ export function Hero({ title, subtitle, badgeText }: HeroProps) {
   const secondaryBreadcrumb = title || "Contact Us";
 
   return (
-    <section className="relative w-full h-[360px] md:h-[400px] flex items-center justify-center overflow-hidden bg-[#c92127] text-white select-none">
+<section className="relative w-full h-[360px] md:h-[400px] flex items-center justify-center overflow-hidden bg-white text-white border-none">
       {/* ==================== BACKGROUND IMAGE LAYER ==================== */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <Image
@@ -25,8 +25,7 @@ export function Hero({ title, subtitle, badgeText }: HeroProps) {
           priority
         />
         {/* Exact Red Branding Mask Filter (Matches image_5582ca.jpg perfectly) */}
-        <div className="absolute inset-0 bg-primary-foreground/80 " />
-        <div className="absolute inset-0 bg-black/35 mix-blend-overlay" />
+       <div className="absolute inset-0 bg-red-700/80" />
       </div>
 
       {/* ==================== CENTERED INNER CONTENT ==================== */}
@@ -60,28 +59,24 @@ export function Hero({ title, subtitle, badgeText }: HeroProps) {
           </div>
         </motion.div>
       </div>
-
-      {/* ==================== BOTTOM DECORATIVE CURVED LAYERS ==================== */}
-      {/* Re-engineered to exactly match the dipping dual-wave visual slopes */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none w-full translate-y-[4px]">
-        <svg
-          viewBox="0 0 1440 160"
-          fill="none"
-          className="w-full h-[55px] md:h-[75px]"
-          preserveAspectRatio="none"
-        >
-          {/* Top Layer: Semi-transparent White Accent Slope */}
-          <path
-            d="M0,90 Q360,150 720,110 T1440,70 L1440,160 L0,160 Z"
-            fill="rgba(255, 255, 255, 0.25)"
-          />
-          {/* Bottom Layer: Solid Matte Section Cover */}
-          <path
-            d="M0,120 Q360,160 720,135 T1440,100 L1440,160 L0,160 Z"
-            fill="#ffffff"
-          />
-        </svg>
-      </div>
+<div className="absolute -bottom-3 md:bottom-0 left-0 right-0 z-40 pointer-events-none w-full overflow-hidden">
+  <svg
+    viewBox="0 0 1440 160"
+    fill="none"
+    className="w-full h-[60px] md:h-[80px] block"
+    preserveAspectRatio="none"
+  >
+    <path
+      d="M0,90 Q360,150 720,110 T1440,70 L1440,161 L0,161 Z"
+      fill="rgba(255, 255, 255, 0.25)"
+    />
+    <path
+      d="M0,120 Q360,160 720,135 T1440,100 L1440,161 L0,161 Z"
+      fill="#ffffff"
+    />
+  </svg>
+</div>
+      
     </section>
   );
 }

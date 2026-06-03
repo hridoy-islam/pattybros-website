@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 const restaurantNavItems = [
   { label: "Home", href: "/" },
   { label: "Our Menu", href: "/menu" },
-  { label: "Reservation", href: "/reservation" },
+  { label: "Gallery", href: "/gallery" },
   { label: "Click & Collect", href: "/takeaway" },
   { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
