@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { Archivo_Black ,Manrope,DM_Sans } from "next/font/google";
+import { Archivo_Black, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/utils/utils";
-import { Providers } from "@/app/providers";
-import { Header } from "@/components/public/Header"; 
-import { Footer } from "@/components/public/Footer";
-
+import { Providers } from "@/app/providers"; // Cleanly handles Redux, PersistGate, etc.
+import { Toaster } from "@/components/ui/toaster";
+import AdminRedirectGuard from "@/components/shared/AdminRedirectGuard";
 
 const fontHeading = Archivo_Black({
   subsets: ["latin"],
@@ -20,15 +19,12 @@ const fontSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://patty-bros.co.uk"),
-
   title: {
     default: "Patty Bro's | Smash Burger Restaurant in London",
     template: "%s | Patty Bro's",
   },
-
   description:
     "Patty Bros is a UK-based smash burger restaurant in London, serving fresh, high-quality burgers, loaded fries, and street food favourites with bold flavour and premium ingredients.",
-
   keywords: [
     "Patty Bros",
     "Smash Burger London",
@@ -41,11 +37,9 @@ export const metadata: Metadata = {
     "Burger Delivery London",
     "Peckham Burger Shop",
   ],
-
   authors: [{ name: "Patty Bros" }],
   creator: "Patty Bros",
   publisher: "Patty Bros",
-
   robots: {
     index: true,
     follow: true,
@@ -57,7 +51,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -78,9 +71,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   manifest: "/site.webmanifest",
-
   openGraph: {
     title: "Patty Bros | Smash Burger Restaurant in London",
     description:
@@ -98,7 +89,6 @@ export const metadata: Metadata = {
     locale: "en_GB",
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
     title: "Patty Bros | Smash Burger Restaurant in London",
@@ -106,13 +96,10 @@ export const metadata: Metadata = {
       "Fresh smash burgers, loaded fries, and street food favourites in London.",
     images: ["/logo.png"],
   },
-
   alternates: {
     canonical: "https://patty-bros.co.uk",
   },
-
   category: "food",
-
   applicationName: "Patty Bros",
 };
 
@@ -121,23 +108,22 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en" className="scroll-smooth">
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased flex flex-col",
-                    fontHeading.variable,
-                        fontSans.variable
-
-
+          fontHeading.variable,
+          fontSans.variable
         )}
       >
+        {/* Pass downstream routes into your client side component wrapper */}
         <Providers>
-          <Header />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
+         <AdminRedirectGuard>
+            <main className="flex-1">{children}</main>
+          </AdminRedirectGuard>
+          <Toaster />
         </Providers>
       </body>
     </html>

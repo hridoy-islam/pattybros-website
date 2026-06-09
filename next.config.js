@@ -3,8 +3,21 @@ const nextConfig = {
   env: {
     // You can add your API secrets here later or in .env
   },
-  images: {
-    domains: ["res.cloudinary.com", "images.unsplash.com"],
+   images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "storage.googleapis.com",
+      },
+    ],
   },
   // CORS Headers as per the gold standard
   async headers() {

@@ -3,7 +3,7 @@ import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 export const siteConfig = {
   name: "Patty Bro's",
   description: "Patty Bro's is a family-friendly restaurant offering delicious meals in a warm and welcoming atmosphere.",
-  address: "United Kingdom",
+  address: "Unit 10, The Aylesham Shopping Centre, Market Place Peckham, Rye Ln, Peckham, London SE15 5EW",
   phone: "",
   email: "demo@pattybros.co.uk",
   

@@ -1,25 +1,41 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    // Dynamic import to ensure it only runs on the client
+    let locomotiveScroll: any;
+
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      
-      const locomotiveScroll = new LocomotiveScroll({
+
+      locomotiveScroll = new LocomotiveScroll({
         lenisOptions: {
-          // You can customize the smoothness here
           duration: 1.5,
           orientation: "vertical",
           gestureOrientation: "vertical",
           smoothWheel: true,
           wheelMultiplier: 2,
           touchMultiplier: 2,
-        }
+        },
       });
+
+      // Stop Lenis from hijacking scroll inside modals/dropdowns
+      const stopScroll = (e: WheelEvent | TouchEvent) => {
+        const target = e.target as HTMLElement;
+        if (target.closest('[data-lenis-prevent]')) {
+          locomotiveScroll?.lenis?.stop?.();
+          setTimeout(() => locomotiveScroll?.lenis?.start?.(), 300);
+        }
+      };
+
+      window.addEventListener("wheel", stopScroll, { passive: true });
+      window.addEventListener("touchmove", stopScroll, { passive: true });
     })();
+
+    return () => {
+      locomotiveScroll?.destroy();
+    };
   }, []);
 
   return <>{children}</>;

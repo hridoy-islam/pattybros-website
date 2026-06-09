@@ -91,7 +91,7 @@ export default function MenuSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative h-[300px] md:h-[800px] rounded-md w-full overflow-hidden gsap-fade-up">
-            <Image src="/chef-making-burger.jpg" alt="Chef preparing food" fill className="object-cover " />
+            <Image src="/home3.jpg" alt="Chef preparing food" fill className="object-cover " />
           </div>
 
           <div className="space-y-20">

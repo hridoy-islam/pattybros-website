@@ -55,7 +55,7 @@ export default function Hero() {
       )
       .fromTo(
         decorativeCircleRef.current,
-        { opacity: 0, scale: 0.5, },
+        { opacity: 0, scale: 0.5 },
         { opacity: 1, scale: 1, rotation: 0, duration: 1.2, ease: "back.out(1.5)" },
         "-=0.8"
       );
@@ -84,8 +84,6 @@ export default function Hero() {
         },
       });
 
-      
-
     }, heroRef);
 
     return () => ctx.revert();
@@ -100,7 +98,7 @@ export default function Hero() {
       <div ref={bgRef} className="absolute inset-0 z-0 h-[115%] w-full -top-[5%]">
         <Image
           src="/hero1.jpg" 
-          alt="Delicious Food"
+          alt="Patty Bros Smash Burgers"
           fill
           className="object-cover brightness-50" 
           priority
@@ -112,21 +110,25 @@ export default function Hero() {
 
       {/* Content Layer */}
       <div className="container relative z-10 mx-auto px-6 sm:px-12 mt-10">
-        <div ref={textRef} className="max-w-4xl space-y-6 lg:space-y-8">
+        <div ref={textRef} className="max-w-5xl space-y-6 lg:space-y-8">
           
           {/* Subtle Premium Header Accent */}
-          <div className="hero-eyebrow flex items-center gap-3 text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-primary">
+          <div className="hero-eyebrow flex items-center gap-3 text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-primary pt-8">
             <span className="w-6 h-[1px] bg-primary block" />
-            <h4>Welcome To Premium Flavors</h4>
+            <h4>British Style Premium Smash Burgers</h4>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-black uppercase leading-[1.05] tracking-tight">
-            <span className="hero-heading-line block">Delicious Food &</span>
-            <span className="hero-heading-line block text-primary">Memorable Dining</span>
+          <h1 className="text-2xl md:text-7xl font-black uppercase leading-[1.05] tracking-tight">
+            <span className="hero-heading-line text-primary-foreground block">PATTY BRO'S</span>
+            <span className="hero-heading-line block text-primary">We Make Burgers. They Say the Best.</span>
           </h1>
 
-          <h3 className="hero-subtitle text-base md:text-lg text-zinc-100 font-medium leading-relaxed max-w-xl">
-            Indulge in a fusion of traditional recipes and contemporary flair, crafted by master chefs using the freshest locally sourced ingredients. 
+          <h3 className="hero-subtitle text-xs md:text-lg text-zinc-100 font-medium leading-relaxed max-w-4xl">
+            Freshly smashed British Dry Aged beef patties, melted cheese, toasted potato buns and Secret house-made sauces. No gimmicks. No shortcuts. Just proper smash burgers cooked fresh to order every single day.
+          </h3>
+
+          <h3 className="hero-subtitle text-xs md:text-base text-zinc-100 leading-relaxed max-w-3xl">
+            Whether you're grabbing lunch, ordering delivery, or booking catering for an event, Patty Bros brings crispy-edged, Juicy flavour-packed smash burgers that hit every time.
           </h3>
 
           <div ref={buttonsRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4 max-w-md sm:max-w-none">
@@ -155,9 +157,9 @@ export default function Hero() {
         className="absolute bottom-24 right-12 md:right-24 z-30 w-36 h-36 hidden lg:flex items-center justify-center rounded-full border border-dashed border-primary/40 bg-black/40 backdrop-blur-md shadow-2xl"
       >
         <div className="text-primary font-medium text-[10px] uppercase text-center tracking-[0.25em] leading-relaxed">
-          Established<br/> 
-          <span className="text-2xl font-black text-white tracking-normal my-0.5 block font-serif">1995</span>
-          <span className="text-[9px] text-zinc-400 block tracking-widest lowercase italic">heritage standard</span>
+          Fresh<br/> 
+          <span className="text-2xl font-black text-white tracking-normal my-0.5 block font-serif">DAILY</span>
+          <span className="text-[9px] text-zinc-400 block tracking-widest lowercase italic">cooked to order</span>
         </div>
       </div>
     </section>

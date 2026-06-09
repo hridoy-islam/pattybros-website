@@ -17,6 +17,7 @@ import {
   FaXTwitter,
   FaYoutube,
   FaInstagram,
+  FaTiktok,
 } from "react-icons/fa6";
 
 const restaurantNavItems = [
@@ -53,9 +54,9 @@ export function Footer() {
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/50" />
       </div>
 
-      <div className="container mx-auto  relative z-10">
+      <div className="container mx-auto relative z-10">
         {/* ==================== UPPER FEATURE COLUMN INFO GRID ==================== */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 text-center pb-20 border-b border-zinc-900">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 text-center">
           {/* Column 1: About Restaurant */}
           <div className="flex flex-col items-center space-y-4 group">
             <div className="text-primary transition-transform duration-300 group-hover:scale-110">
@@ -65,7 +66,7 @@ export function Footer() {
               About Restaurant
             </h4>
             <h3 className="text-zinc-400 text-sm max-w-xs leading-relaxed font-medium">
-              Enjoy a wonderful food and cafe experience
+              Authentic burgers and food crafted with passion in the heart of Peckham since 2025
             </h3>
           </div>
 
@@ -79,10 +80,10 @@ export function Footer() {
             </h4>
             <div className="text-zinc-400 text-sm font-medium space-y-0.5">
               <h4 className="hover:text-primary transition-colors cursor-pointer">
-                {siteConfig.email}
+                {siteConfig.email || "info@pattybros.co.uk"}
               </h4>
               <h4 className="hover:text-primary transition-colors cursor-pointer">
-                {siteConfig.phone}
+                (+44) 07495258565
               </h4>
             </div>
           </div>
@@ -96,7 +97,10 @@ export function Footer() {
               Let's Meet
             </h4>
             <h4 className="text-zinc-400 text-sm max-w-xs leading-relaxed font-medium">
-              {siteConfig.address}
+              Patty Bros, Market Place Peckham<br />
+              Unit 10, The Aylesham Shopping Centre<br />
+              Rye Ln, Peckham<br />
+              London SE15 5EW
             </h4>
           </div>
 
@@ -108,15 +112,34 @@ export function Footer() {
             <h4 className="text-white font-black text-sm uppercase tracking-[0.15em]">
               Opening Hours
             </h4>
-            <div className="text-zinc-400 text-sm font-medium space-y-0.5">
-              <h4>Monday - Sunday</h4>
-              <h4 className="text-zinc-300 font-bold">9:00AM to 11:30PM</h4>
+            <div className="text-zinc-400 text-sm font-medium space-y-1">
+              <div>
+                <h4 className="text-zinc-300 font-bold">Sunday – Thursday</h4>
+                <h4>12:00 – 20:30</h4>
+              </div>
+              <div className="mt-2">
+                <h4 className="text-zinc-300 font-bold">Friday – Saturday</h4>
+                <h4>11:30 – 21:30</h4>
+              </div>
             </div>
           </div>
         </div>
 
+        <div className="flex justify-center py-5">
+          <Link href="/">
+            <Image
+              src="/logo.png" // your logo path
+              alt="Patty Bro's"
+              width={70}
+              height={50}
+              className="h-auto w-auto object-contain scale-90"
+              priority
+            />
+          </Link>
+        </div>
+
         {/* ==================== MIDDLE RESTAURANT NAVIGATION LINK MATRIX ==================== */}
-        <div className="py-10 flex flex-wrap justify-center gap-x-10 gap-y-4 border-b border-zinc-900/60 text-xs uppercase tracking-[0.2em] font-extrabold">
+        <div className="py-10 flex flex-wrap justify-center gap-x-10 gap-y-4 border-y border-zinc-900/60 text-xs uppercase tracking-[0.2em] font-extrabold">
           {restaurantNavItems.map((nav, index) => (
             <Link
               key={index}
@@ -129,32 +152,21 @@ export function Footer() {
         </div>
 
         {/* ==================== LOWER SUB-FOOTER CONTROL PANEL ==================== */}
-        <div className=" max-md:py-5 flex flex-col lg:flex-row items-center justify-between gap-8">
-          {/* Center Left Block: Copyright statement */}
-          <div className="text-xs order-5 uppercase tracking-widest font-bold text-zinc-500 order-2 lg:order-2">
+        <div className="py-8 flex flex-col lg:flex-row items-center justify-between gap-8">
+          {/* Copyright statement */}
+          <div className="text-xs uppercase tracking-widest font-bold text-zinc-500 order-2 lg:order-1">
             &copy; Copyright {currentYear}{" "}
             <span className="text-primary font-black">Patty Bro's</span>
-          </div>
-
-          <div className="order-1 lg:order-3">
-            <Link href="/">
-              <Image
-                src="/logo.png" // your logo path
-                alt="Patty Bro's"
-                width={70}
-                height={50}
-                className="h-auto w-auto object-contain scale-90"
-                priority
-              />
-            </Link>
+            {" "}| Established 2025
           </div>
 
           {/* Right Block: Core Social Media Icons System */}
-          <div className="flex items-center gap-2 order-4 lg:order-4">
+          <div className="flex items-center gap-2 order-1 lg:order-2">
             {[
-              { icon: FaFacebookF, href: "#" },
-              { icon: FaXTwitter, href: "#" },
-              { icon: FaYoutube, href: "#" },
+              {
+                icon: FaTiktok,
+                href: "https://www.tiktok.com/@patty.bros?_r=1&_t=ZN-96vTkbFv7Uk",
+              },
               {
                 icon: FaInstagram,
                 href: "https://www.instagram.com/pattybros_uk?igsh=cWI3cWY1ODlocm02&utm_source=qr",
@@ -162,6 +174,8 @@ export function Footer() {
             ].map((soc, i) => (
               <a
                 key={i}
+                target="_blank"
+                rel="noopener noreferrer"
                 href={soc.href}
                 className="w-9 h-9 bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all flex items-center justify-center rounded-none text-sm border border-zinc-800/40"
               >
@@ -172,10 +186,10 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Floating Action Element: Smooth back-to-top trigger button (Primary-Foreground Red) */}
+      {/* Floating Action Element: Smooth back-to-top trigger button */}
       <button
         onClick={scrollToTop}
-        className="absolute bottom-24 right-6 md:right-12 z-50 w-12 h-12  bg-primary-foreground text-white flex items-center justify-center rounded-full shadow-2xl transition-all duration-300 hover:bg-primary-foreground/90 hover:-translate-y-1 group"
+        className="absolute bottom-24 right-6 md:right-12 z-50 w-12 h-12 bg-primary-foreground text-white flex items-center justify-center rounded-full shadow-2xl transition-all duration-300 hover:bg-primary-foreground/90 hover:-translate-y-1 group"
         aria-label="Scroll back to top"
       >
         <ChevronUp className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />

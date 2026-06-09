@@ -120,7 +120,7 @@ export default function FAQ() {
             {/* Top Left: Large burger image - spans 5 columns */}
             <div className="col-span-5 relative h-[240px] bg-zinc-100 shadow-sm overflow-hidden">
               <Image
-                src="/Burgers on counter.jpg"
+                src="/home3.jpg"
                 alt="Burgers on counter"
                 fill
                 className="object-cover"
@@ -131,7 +131,7 @@ export default function FAQ() {
             {/* Top Right: Success Event - smaller, spans 3 columns */}
             <div className="col-span-3 relative h-[240px] bg-primary overflow-hidden group shadow-sm">
               <Image
-                src="/Success Event.jpg"
+                src="/home1.jpg"
                 alt="Success Event"
                 fill
                 className="object-cover opacity-30 grayscale contrast-125 transition-transform duration-500 group-hover:scale-105"
@@ -171,11 +171,11 @@ export default function FAQ() {
             {/* Bottom Right: Chef image - smaller, spans 3 columns */}
             <div className="col-span-5 relative h-[240px] bg-zinc-100 shadow-sm overflow-hidden">
               <Image
-                src="/chef-cooking.jpg"
+                src="/home6.jpg"
                 alt="Our professional Chef"
                 fill
-                className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, 200px"
+                className="object-cover object-bottom"
+                sizes="(max-width: 768px) 100vw, 200px "
               />
             </div>
           </div>

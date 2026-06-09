@@ -6,12 +6,12 @@ import gsap from "gsap";
 
 const GALLERY_ITEMS = [
   { 
-    src: "/Signature Burgers.jpg", 
+    src: "/home3.jpg", 
     title: "Signature Burgers",
   },
-  { src: "/Spicy Beef.jpg", title: "Spicy Beef" },
+  { src: "/Beef Puck.jpg", title: "Beef Puck" },
   { src: "/Table Setup.jpg", title: "Table Setup" },
-  { src: "/Wine & Dine.jpg", title: "Wine & Dine" },
+  // { src: "/Wine & Dine.jpg", title: "Wine & Dine" },
 ];
 
 export default function GalleryInfoSection() {
@@ -53,7 +53,7 @@ export default function GalleryInfoSection() {
     <section ref={containerRef} className="bg-white py-20 select-none ">
       <div className="container  mx-auto">
  {/* 1. UPGRADED: 4-Column Interactive Image Matrix */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-16">
         {GALLERY_ITEMS.map((item, index) => (
           <div 
             key={index} 

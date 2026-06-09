@@ -15,14 +15,14 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "text-white border border-gray-500 bg-background hover:bg-background/90 hover:text-white",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         // Adding the 'cyberpeers' brand button style here for global use
         brand:
-          "bg-primary text-white font-bold uppercase tracking-widest shadow-lg hover:bg-black transition-all rounded-full",
+          "text-white border-none bg-primary hover:bg-primary/90 hover:text-white",
       },
       size: {
         default: "h-10 px-4 py-2",

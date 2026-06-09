@@ -1,16 +1,22 @@
 "use client";
 
-import * as React from "react";
-import { NextUIProvider } from "@nextui-org/react";
+import React from "react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
+import store from "@/redux/store";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
-export interface ProvidersProps {
-  children: React.ReactNode;
-}
+const persistor = persistStore(store);
 
-export function Providers({ children }: ProvidersProps) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <NextUIProvider>
-      {children}
-    </NextUIProvider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <TooltipProvider>
+          {children}
+        </TooltipProvider>
+      </PersistGate>
+    </Provider>
   );
 }
