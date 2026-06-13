@@ -463,20 +463,21 @@
                   line-height: 1.6;
                 "
               >
+                <!-- Header updated for Patty Bro's -->
                 <h2
                   style="
                     margin: 0 0 20px 0;
                     font-size: 20px;
                     font-weight: 700;
-                    color: #0f172a;
+                    color: #000000;
                     border-bottom: 2px solid #f1f5f9;
                     padding-bottom: 10px;
                   "
                 >
-                  New Contact Enquiry – Cyberpeers
+                  New Contact Enquiry – Patty Bro's
                 </h2>
-                <p style="margin: 0 0 25px 0; color: #475569;">
-                  The following details have been submitted by a prospective client through the Cyberpeers contact form.
+                <p style="margin: 0 0 25px 0; color: #000000;">
+                  The following details have been submitted through the Patty Bro's contact form.
                 </p>
                 <table
                   width="100%"
@@ -486,48 +487,49 @@
                   style="border-collapse: collapse;"
                 >
                   <tr>
-                    <td style="padding: 10px 0; font-weight: 600; width: 35%; color: #0f172a; border-bottom: 1px solid #f1f5f9;">
+                    <td style="padding: 10px 0; font-weight: 600; width: 35%; color: #000000; border-bottom: 1px solid #f1f5f9;">
                       Full Name
                     </td>
-                    <td style="padding: 10px 0; color: #334155; border-bottom: 1px solid #f1f5f9;">
+                    <td style="padding: 10px 0; color: #000000; border-bottom: 1px solid #f1f5f9;">
                       <%= name %>
                     </td>
                   </tr>
 
                   <tr>
-                    <td style="padding: 10px 0; font-weight: 600; color: #0f172a; border-bottom: 1px solid #f1f5f9;">
+                    <td style="padding: 10px 0; font-weight: 600; color: #000000; border-bottom: 1px solid #f1f5f9;">
                       Email
                     </td>
-                    <td style="padding: 10px 0; color: #334155; border-bottom: 1px solid #f1f5f9;">
-                      <a href="mailto:<%= email %>" style="color: #2563eb; text-decoration: none;"><%= email %></a>
+                    <td style="padding: 10px 0; color: #000000; border-bottom: 1px solid #f1f5f9;">
+                      <a href="mailto:<%= email %>" style="color: #b01b20; text-decoration: none; font-weight: 600;"><%= email %></a>
                     </td>
                   </tr>
 
                   <tr>
-                    <td style="padding: 10px 0; font-weight: 600; color: #0f172a; border-bottom: 1px solid #f1f5f9;">
+                    <td style="padding: 10px 0; font-weight: 600; color: #000000; border-bottom: 1px solid #f1f5f9;">
                       Phone
                     </td>
-                    <td style="padding: 10px 0; color: #334155; border-bottom: 1px solid #f1f5f9;">
-                      <%= phone %>
+                    <td style="padding: 10px 0; color: #000000; border-bottom: 1px solid #f1f5f9;">
+                      <%= phone || "Not Provided" %>
+                    </td>
+                  </tr>
+
+                  <!-- Swapped 'Service Required' out for 'Subject' to match your application schema -->
+                  <tr>
+                    <td style="padding: 10px 0; font-weight: 600; color: #000000; border-bottom: 1px solid #f1f5f9;">
+                      Subject
+                    </td>
+                    <td style="padding: 10px 0; color: #000000; border-bottom: 1px solid #f1f5f9;">
+                      <%= subject %>
                     </td>
                   </tr>
 
                   <tr>
-                    <td style="padding: 10px 0; font-weight: 600; color: #0f172a; border-bottom: 1px solid #f1f5f9;">
-                      Service Required
-                    </td>
-                    <td style="padding: 10px 0; color: #334155; border-bottom: 1px solid #f1f5f9;">
-                      <%= service %>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td colspan="2" style="padding: 15px 0 5px 0; font-weight: 600; color: #0f172a;">
+                    <td colspan="2" style="padding: 15px 0 5px 0; font-weight: 600; color: #000000;">
                       Message
                     </td>
                   </tr>
                   <tr>
-                    <td colspan="2" style="padding: 10px 15px; color: #334155; background-color: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+                    <td colspan="2" style="padding: 10px 15px; color: #000000; background-color: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
                       <%= message %>
                     </td>
                   </tr>

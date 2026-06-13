@@ -1,52 +1,45 @@
 import type { Metadata } from "next";
 
 
-
 export const metadata: Metadata = {
   title: "About Us",
-
   description:
-    "Learn more about Cyberpeers — a UK-based digital marketing and technology agency helping brands grow through web development, SEO, branding, UI/UX design, and performance marketing.",
-
+    "Learn more about Patty Bros, a modern smash burger restaurant in London. Discover our story, passion for bold flavours, fresh ingredients, and commitment to delivering premium street food experiences.",
   keywords: [
-    "About Cyberpeers",
-    "Cyberpeers Team",
-    "Digital Marketing Experts UK",
-    "Web Development Agency UK",
-    "SEO Specialists",
-    "Performance Marketing Agency",
-    "Creative Tech Team",
-    "Brand Strategy Agency",
+    "About Patty Bros",
+    "Smash Burger London",
+    "Burger Restaurant Story",
+    "Patty Bros UK",
+    "London Street Food Brand",
+    "Burger Kitchen Peckham",
+    "Our Story Patty Bros",
   ],
-
   openGraph: {
-    title: "About Cyberpeers | Digital Marketing & Tech Agency",
+    title: "About Patty Bros | Our Story",
     description:
-      "Discover the team, mission, and vision behind Cyberpeers. We combine technology, creativity, and strategy to help businesses scale with measurable results.",
-    url: "https://cyberpeers.co.uk/about",
-    siteName: "Cyberpeers",
+      "Discover the story behind Patty Bros – a London-based smash burger restaurant serving bold, juicy burgers and premium street food favourites.",
+    url: "https://patty-bros.co.uk/about",
+    siteName: "Patty Bros",
     images: [
       {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "About Cyberpeers Digital Marketing & Tech Agency",
+        alt: "Patty Bros About Page",
       },
     ],
-    locale: "en_US",
+    locale: "en_GB",
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
-    title: "About Cyberpeers | Digital Marketing & Tech Agency",
+    title: "About Patty Bros | Smash Burger Restaurant London",
     description:
-      "Meet the experts behind Cyberpeers — delivering innovative web, SEO, branding, and marketing solutions.",
+      "Learn the story behind Patty Bros and our passion for smash burgers and street food in London.",
     images: ["/logo.png"],
   },
-
   alternates: {
-    canonical: "https://cyberpeers.co.uk/about",
+    canonical: "https://patty-bros.co.uk/about",
   },
 };
 

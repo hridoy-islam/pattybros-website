@@ -39,7 +39,8 @@ export default function SignInPage() {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
 
-  const { user, loading, error } = useSelector((state: any) => state.auth)||{ user:null,loading: false, error: null };
+  // Fixed selector compilation logic by safely handling fallback values inside the hook callback context
+  const { user, loading, error } = useSelector((state: any) => state?.auth || { user: null, loading: false, error: null });
 
   useEffect(() => {
     if (!user) return;
@@ -101,7 +102,6 @@ export default function SignInPage() {
               Crafted for Purists.
             </span>
           </h1>
-         
         </div>
       </div>
 
@@ -192,16 +192,6 @@ export default function SignInPage() {
                 )}
               />
 
-              {/* Forgot Password Link Container */}
-              {/* <div className="flex items-center justify-end pt-1">
-                <Link
-                  href="/forget-password"
-                  className="text-xs font-bold text-primary hover:text-primary/90 transition-colors uppercase tracking-wide"
-                >
-                  Forget Password?
-                </Link>
-              </div> */}
-
               {/* Trigger Button */}
               <Button
                 disabled={loading}
@@ -210,38 +200,6 @@ export default function SignInPage() {
               >
                 {loading ? "Authenticating..." : "Sign In"}
               </Button>
-
-              {/* Sign Up / Create Account Redirection Row */}
-              {/* <div className="text-center pt-1">
-                <h3 className="text-xs text-zinc-100 font-medium">
-                  Don't have an account?{" "}
-                  <Link
-                    href="/sign-up"
-                    className="text-primary hover:text-primary/90 font-bold uppercase tracking-wider text-[11px] ml-1 transition-colors"
-                  >
-                    Create an account
-                  </Link>
-                </h3>
-              </div> */}
-
-              {/* Terms and Conditions Disclaimer */}
-              {/* <p className="text-center text-[11px] text-zinc-500 leading-relaxed pt-2">
-                By logging in, you accept our standard{" "}
-                <Link
-                  href="#"
-                  className="text-zinc-400 underline underline-offset-2 hover:text-white"
-                >
-                  Terms of Service
-                </Link>{" "}
-                and updated{" "}
-                <Link
-                  href="#"
-                  className="text-zinc-400 underline underline-offset-2 hover:text-white"
-                >
-                  Privacy Protocols
-                </Link>
-                .
-              </p> */}
             </form>
           </Form>
         </motion.div>

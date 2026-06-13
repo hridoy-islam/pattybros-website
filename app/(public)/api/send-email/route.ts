@@ -5,19 +5,16 @@ import path from "path";
 
 export async function POST(req: Request) {
   try {
-    // 1. Updated to match your frontend form schema
-    const { name, email, phone, service, message } = await req.json();
+    // Synchronized to perfectly match the frontend form fields
+    const { name, email, subject, phone, message } = await req.json();
 
     const transporter = nodemailer.createTransport({
-      host: "smtp.ionos.co.uk",
-      port: 587,
-      secure: false,
+      host: "smtp.hostinger.com",
+      port: 465,
+      secure: true, 
       auth: {
-        user: "contact@cyberpeers.co.uk",
-        pass: "4FROdCo?!)tT", // Tip: Move this to process.env.SMTP_PASSWORD later!
-      },
-      tls: {
-        rejectUnauthorized: false,
+        user: "info@patty-bros.co.uk", 
+        pass: "Admin4London@", 
       },
     });
 
@@ -26,27 +23,28 @@ export async function POST(req: Request) {
       "static/email_template/contact_template.ejs"
     );
 
-    // 2. Pass the correct variables to your EJS template
+    // Context passing variables over to your administrative EJS layout
     const html = await ejs.renderFile(templatePath, {
       name,
       email,
+      subject,
       phone,
-      service,
       message,
     });
 
     const mailOptions = {
-      from: `"Cyberpeers" <contact@cyberpeers.co.uk>`, 
-      to: "contact@cyberpeers.co.uk",
-      subject: `New Contact Form Submission from ${name}`,
+      from: `"Patty Bro's" <info@patty-bros.co.uk>`, 
+      // to: "info@patty-bros.co.uk",
+      to: "mahitasnimul2@gmail.com",
+      subject: `New Contact Form Submission: ${subject}`,
       html,
     };
 
     const info = await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ success: true, info });
-  } catch (error) {
-    console.error("Email error:", error);
-    return NextResponse.json({ success: false, error }, { status: 500 });
+  } catch (error: any) {
+    console.error("Internal Email error:", error);
+    return NextResponse.json({ success: false, message: error?.message || error }, { status: 500 });
   }
 }

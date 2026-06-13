@@ -26,39 +26,55 @@ export default function ContactPage() {
     subject: "",
     phone: "",
     message: "",
-    captcha: ""
   });
   
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Simple captcha validation
-    if (formData.captcha.toLowerCase() !== "catch") {
-      toast({
-        title: "Invalid Captcha",
-        description: "Please type the word correctly.",
-        variant: "destructive",
-      });
-      return;
-    }
-
     try {
       setLoading(true);
       
-      await axiosInstance.post("/contact", {
+      const payload = {
         name: formData.name,
         email: formData.email.trim().toLowerCase(),
         subject: formData.subject,
         phone: formData.phone,
         message: formData.message,
-      });
+      };
 
-      toast({
-        title: "Message Sent Successfully!",
-        description: "We'll get back to you as soon as possible.",
-      });
+      // Executes both endpoint requests simultaneously using native fetch
+      const responses = await Promise.all([
+        fetch("/api/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }),
+        fetch("/api/send-email-user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }),
+      ]);
+
+      // Native fetch checks: Verify both network operations succeeded 
+      for (const response of responses) {
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.message || "Server encountered an error processing requests.");
+        }
+      }
+
+      // Restored success toast configuration
+      // toast({
+      //   title: "Message Sent Successfully!",
+      //   description: "We'll get back to you as soon as possible.",
+      // });
 
       // Reset form
       setFormData({
@@ -67,12 +83,11 @@ export default function ContactPage() {
         subject: "",
         phone: "",
         message: "",
-        captcha: ""
       });
       
     } catch (error: any) {
       console.error(error);
-      const fallbackMsg = error?.response?.data?.message || "Failed to send message. Please try again.";
+      const fallbackMsg = error?.message || "Failed to send message. Please try again.";
       toast({
         title: "Error",
         description: fallbackMsg,
@@ -82,7 +97,6 @@ export default function ContactPage() {
       setLoading(false);
     }
   };
-
   return (
     <SmoothScroll>
       {/* 1. Header Hero Core Overlay Banner Component */}
@@ -106,15 +120,15 @@ export default function ContactPage() {
               <div className="w-12 h-12 rounded-full flex items-center justify-center text-primary-foreground bg-red-50/60 mb-5 border border-red-100/20">
                 <MapPin className="w-5 h-5 stroke-[1.5]" />
               </div>
-              <h4 className="text-zinc-900 font-extrabold text-xs uppercase tracking-[0.15em] mb-2 select-none">
+              <h4 className="text-zinc-900 font-extraboldtext-sm uppercase tracking-[0.15em] mb-2 select-none">
                 Our Address
               </h4>
-              <h4 className="text-zinc-500 text-xs font-semibold leading-relaxed ">
+              <p className="text-sm font-semibold leading-relaxed ">
                 Patty Bros, Market Place Peckham<br />
                 Unit 10, The Aylesham Shopping Centre<br />
                 Rye Ln, Peckham<br />
                 London SE15 5EW
-              </h4>
+              </p>
             </motion.div>
 
             {/* Card 2: Email Address */}
@@ -128,12 +142,12 @@ export default function ContactPage() {
               <div className="w-12 h-12 rounded-full flex items-center justify-center text-primary-foreground bg-red-50/60 mb-5 border border-red-100/20">
                 <Mail className="w-5 h-5 stroke-[1.5]" />
               </div>
-              <h4 className="text-zinc-900 font-extrabold text-xs uppercase tracking-[0.15em] mb-2 select-none">
+              <h4 className=" font-extraboldtext-sm uppercase tracking-[0.15em] mb-2 select-none">
                 Email Address
               </h4>
-              <div className="text-zinc-500 text-xs font-semibold leading-relaxed flex flex-col">
+              <div className="text-sm font-semibold leading-relaxed flex flex-col">
                 <a href="mailto:info@pattybros.co.uk" className="hover:text-primary-foreground transition-colors">
-                  <h4>info@pattybros.co.uk</h4>
+                  <p>info@pattybros.co.uk</p>
                 </a>
               </div>
             </motion.div>
@@ -149,12 +163,12 @@ export default function ContactPage() {
               <div className="w-12 h-12 rounded-full flex items-center justify-center text-primary-foreground bg-red-50/60 mb-5 border border-red-100/20">
                 <Phone className="w-5 h-5 stroke-[1.5]" />
               </div>
-              <h4 className="text-zinc-900 font-extrabold text-xs uppercase tracking-[0.15em] mb-2 select-none">
+              <h4 className="font-extraboldtext-sm uppercase tracking-[0.15em] mb-2 select-none">
                 Phone Number
               </h4>
-              <div className="text-zinc-500 text-xs font-semibold leading-relaxed flex flex-col">
+              <div className="text-sm font-semibold leading-relaxed flex flex-col">
                 <a href="tel:+447495258565" className="hover:text-primary-foreground transition-colors">
-                  <h4>(+44) 07495258565</h4>
+                  <p>(+44) 07495258565</p>
                 </a>
               </div>
             </motion.div>
@@ -170,17 +184,17 @@ export default function ContactPage() {
               <div className="w-12 h-12 rounded-full flex items-center justify-center text-primary-foreground bg-red-50/60 mb-5 border border-red-100/20">
                 <Clock className="w-5 h-5 stroke-[1.5]" />
               </div>
-              <h4 className="text-zinc-900 font-extrabold text-xs uppercase tracking-[0.15em] mb-2 select-none">
+              <h4 className="font-extraboldtext-sm uppercase tracking-[0.15em] mb-2 select-none">
                 Opening Time
               </h4>
-              <div className="text-zinc-500 text-xs font-semibold leading-relaxed space-y-2">
+              <div className="text-sm font-semibold leading-relaxed space-y-2">
                 <div>
-                  <h4 className="text-zinc-700 font-bold">Sunday – Thursday</h4>
-                  <h4>12:00 – 20:30</h4>
+                  <p className=" font-bold">Sunday – Thursday</p>
+                  <p>12:00 – 20:30</p>
                 </div>
                 <div>
-                  <h4 className="text-zinc-700 font-bold">Friday – Saturday</h4>
-                  <h4>11:30 – 21:30</h4>
+                  <p className=" font-bold">Friday – Saturday</p>
+                  <p>11:30 – 21:30</p>
                 </div>
               </div>
             </motion.div>
@@ -193,7 +207,7 @@ export default function ContactPage() {
             {/* Form Section Header Minimal Line Badging Indicator */}
             <div className="flex items-center gap-3 mb-2 select-none">
               <span className="w-6 h-[2px] bg-primary-foreground" />
-              <span className="text-primary-foreground font-black text-xs uppercase tracking-[0.25em]">
+              <span className="text-primary-foreground font-blacktext-sm uppercase tracking-[0.25em]">
                 <h4>Contact</h4>
               </span>
             </div>
@@ -283,29 +297,12 @@ export default function ContactPage() {
                 />
               </div>
 
-              {/* Field 6: Spam Security Unit Captcha Block */}
-              <div className="space-y-3 pt-1">
-                <input 
-                  type="text" 
-                  required
-                  placeholder="Type the below word" 
-                  className="w-full h-11 px-5 text-sm rounded-full border border-zinc-200 bg-zinc-50/40 focus:outline-none focus:border-zinc-400 focus:bg-white transition-all text-zinc-800 placeholder:text-zinc-300"
-                  value={formData.captcha}
-                  onChange={(e) => setFormData({...formData, captcha: e.target.value})}
-                />
-                <div className="pl-2 select-none pointer-events-none">
-                  <span className="font-serif italic text-sm tracking-[0.25em] text-zinc-500 bg-zinc-100 px-4 py-1.5 rounded border border-zinc-200/50 opacity-80">
-                    catch
-                  </span>
-                </div>
-              </div>
-
               {/* Action Button Dispatch Panel */}
               <div className="pt-4">
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="inline-flex items-center justify-center bg-primary-foreground text-white font-extrabold text-xs uppercase tracking-widest rounded-full px-9 py-4 shadow-md shadow-red-900/10 hover:bg-[#b01b20] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="inline-flex items-center justify-center bg-primary-foreground text-white font-extraboldtext-sm uppercase tracking-widest rounded-full px-9 py-4 shadow-md shadow-red-900/10 hover:bg-[#b01b20] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <>
@@ -326,7 +323,7 @@ export default function ContactPage() {
         {/* ==================== SECTION C: FOOTER FULL-BLEED INTERACTIVE MAP ==================== */}
         <div className="w-full h-[400px] md:h-[480px] bg-zinc-200 relative border-t border-zinc-200/30">
           <iframe 
-  src="https://maps.google.com/maps?q=51.47263781372934,-0.06956161550498596&z=15&output=embed"
+            src="https://maps.google.com/maps?q=51.47263781372934,-0.06956161550498596&z=15&output=embed"
             className="w-full h-full border-0 grayscale  hover:grayscale-0 opacity-90 contrast-[1.10]"
             allowFullScreen={false} 
             loading="lazy" 

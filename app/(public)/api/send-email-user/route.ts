@@ -5,19 +5,16 @@ import path from "path";
 
 export async function POST(req: Request) {
   try {
-    // 1. Updated to match the frontend (only extract what you need for this email)
+    // Pull context sent down by your client-side hook
     const { name, email } = await req.json();
 
     const transporter = nodemailer.createTransport({
-      host: "smtp.ionos.co.uk",
-      port: 587,
-      secure: false, 
+      host: "smtp.hostinger.com",
+      port: 465,
+      secure: true, 
       auth: {
-        user: "contact@cyberpeers.co.uk",
-        pass: "4FROdCo?!)tT", 
-      },
-      tls: {
-        rejectUnauthorized: false,
+        user: "info@patty-bros.co.uk", 
+        pass: "Admin4London@", 
       },
     });
 
@@ -26,24 +23,23 @@ export async function POST(req: Request) {
       "static/email_template/contact_user_template.ejs"
     );
     
-    // 2. Pass 'name' instead of 'fullName'
     const html = await ejs.renderFile(templatePath, {
       name,
       email,
     });
 
     const mailOptions = {
-      from: `"Cyberpeers" <contact@cyberpeers.co.uk>`, 
-      to: email,
-      subject: `Thank You for Contacting Cyberpeers`,
+      from: `"Patty Bro's" <info@patty-bros.co.uk>`, 
+      to: email, 
+      subject: `Thank You for Contacting Patty Bro's`,
       html,
     };
 
     const info = await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ success: true, info });
-  } catch (error) {
-    console.error("Email error:", error);
-    return NextResponse.json({ success: false, error }, { status: 500 });
+  } catch (error: any) {
+    console.error("User Confirmation Email error:", error);
+    return NextResponse.json({ success: false, message: error?.message || error }, { status: 500 });
   }
 }

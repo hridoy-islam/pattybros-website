@@ -38,7 +38,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-zinc-950 text-zinc-400 pt-24 overflow-hidden select-none">
+    <footer className="relative bg-zinc-950 text-zinc-200 pt-24 overflow-hidden select-none">
       {/* Pattern Background Layers */}
       <div className="absolute inset-0 pointer-events-none opacity-30">
         {/* Diagonal Line Pattern */}
@@ -65,7 +65,7 @@ export function Footer() {
             <h4 className="text-white font-black text-sm uppercase tracking-[0.15em]">
               About Restaurant
             </h4>
-            <h3 className="text-zinc-400 text-sm max-w-xs leading-relaxed font-medium">
+            <h3 className="text-zinc-200 text-sm max-w-xs leading-relaxed font-medium">
               Authentic burgers and food crafted with passion in the heart of Peckham since 2025
             </h3>
           </div>
@@ -78,9 +78,9 @@ export function Footer() {
             <h4 className="text-white font-black text-sm uppercase tracking-[0.15em]">
               Let's Talk
             </h4>
-            <div className="text-zinc-400 text-sm font-medium space-y-0.5">
+            <div className="text-zinc-200 text-sm font-medium space-y-0.5">
               <h4 className="hover:text-primary transition-colors cursor-pointer">
-                {siteConfig.email || "info@pattybros.co.uk"}
+                { "info@pattybros.co.uk"}
               </h4>
               <h4 className="hover:text-primary transition-colors cursor-pointer">
                 (+44) 07495258565
@@ -96,7 +96,7 @@ export function Footer() {
             <h4 className="text-white font-black text-sm uppercase tracking-[0.15em]">
               Let's Meet
             </h4>
-            <h4 className="text-zinc-400 text-sm max-w-xs leading-relaxed font-medium">
+            <h4 className="text-zinc-200 text-sm max-w-xs leading-relaxed font-medium">
               Patty Bros, Market Place Peckham<br />
               Unit 10, The Aylesham Shopping Centre<br />
               Rye Ln, Peckham<br />
@@ -112,7 +112,7 @@ export function Footer() {
             <h4 className="text-white font-black text-sm uppercase tracking-[0.15em]">
               Opening Hours
             </h4>
-            <div className="text-zinc-400 text-sm font-medium space-y-1">
+            <div className="text-zinc-200 text-sm font-medium space-y-1">
               <div>
                 <h4 className="text-zinc-300 font-bold">Sunday – Thursday</h4>
                 <h4>12:00 – 20:30</h4>
@@ -144,7 +144,7 @@ export function Footer() {
             <Link
               key={index}
               href={nav.href}
-              className="text-zinc-400 hover:text-primary transition-colors duration-200"
+              className="text-zinc-200 hover:text-primary transition-colors duration-200"
             >
               <h2>{nav.label}</h2>
             </Link>
@@ -177,7 +177,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 href={soc.href}
-                className="w-9 h-9 bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-all flex items-center justify-center rounded-none text-sm border border-zinc-800/40"
+                className="w-9 h-9 bg-zinc-900 text-zinc-200 hover:text-white hover:bg-zinc-800 transition-all flex items-center justify-center rounded-none text-sm border border-zinc-800/40"
               >
                 <soc.icon className="w-4 h-4 fill-current stroke-0" />
               </a>

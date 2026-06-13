@@ -2,49 +2,43 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-
   description:
-    "Contact Cyberpeers, a London-based digital marketing and web development agency located in Barking, UK.",
-
+    "Get in touch with Patty Bros, a smash burger restaurant in London. Contact us for orders, delivery inquiries, catering, feedback, or general support.",
   keywords: [
-    "Contact Cyberpeers",
-    "London Digital Agency",
-    "Web Development Agency London",
-    "SEO Agency Barking",
-    "Digital Marketing Agency UK",
-    "Cyberpeers London Office",
-    "Barking Web Design Company",
-    "UK Tech Agency Contact",
+    "Contact Patty Bros",
+    "Smash Burger London Contact",
+    "Burger Restaurant Support UK",
+    "Patty Bros Contact Details",
+    "London Burger Delivery Contact",
+    "Peckham Burger Shop Contact",
+    "Food Order Inquiry London",
   ],
-
   openGraph: {
-    title: "Contact Cyberpeers | London Digital Marketing Agency",
+    title: "Contact Patty Bros",
     description:
-      "Get in touch with Cyberpeers in Barking, London. Let’s build your next website or marketing campaign together.",
-    url: "https://cyberpeers.co.uk/contact",
-    siteName: "Cyberpeers",
+      "Reach out to Patty Bros for orders, delivery support, catering inquiries, or feedback. We're here to help you enjoy the best smash burgers in London.",
+    url: "https://patty-bros.co.uk/contact",
+    siteName: "Patty Bros",
     images: [
       {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "Contact Cyberpeers London Digital Agency",
+        alt: "Contact Patty Bros",
       },
     ],
     locale: "en_GB",
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
-    title: "Contact Cyberpeers | London Digital Agency",
+    title: "Contact Patty Bros",
     description:
-      "Speak with our London-based team about web development, SEO, and performance marketing.",
+      "Get in touch with Patty Bros for orders, delivery, catering, or support in London.",
     images: ["/logo.png"],
   },
-
   alternates: {
-    canonical: "https://cyberpeers.co.uk/contact",
+    canonical: "https://patty-bros.co.uk/contact",
   },
 };
 

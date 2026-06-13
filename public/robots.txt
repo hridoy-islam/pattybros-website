@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# Protected and Auth URL routes
+Disallow: /office
+Disallow: /admin

@@ -1,57 +1,54 @@
 import type { Metadata } from "next";
 
 
-
 export const metadata: Metadata = {
   title: "Our Menu",
-
   description:
-    "Learn more about Cyberpeers — a UK-based digital marketing and technology agency helping brands grow through web development, SEO, branding, UI/UX design, and performance marketing.",
-
+    "Explore the Patty Bros menu featuring juicy smash burgers, loaded fries, chicken burgers, sides, and drinks. Fresh, bold flavours served in London’s favourite burger spot.",
   keywords: [
-    "About Cyberpeers",
-    "Cyberpeers Team",
-    "Digital Marketing Experts UK",
-    "Web Development Agency UK",
-    "SEO Specialists",
-    "Performance Marketing Agency",
-    "Creative Tech Team",
-    "Brand Strategy Agency",
+    "Patty Bros Menu",
+    "Smash Burger Menu London",
+    "Burger Restaurant Menu UK",
+    "Loaded Fries Menu",
+    "Chicken Burgers London",
+    "Best Burgers Peckham Menu",
+    "Street Food Menu London",
+    "Fast Food Menu UK",
   ],
 
   openGraph: {
-    title: "Our Menu | Smash Burgers & Fries",
+    title: "Our Menu | Patty Bros Smash Burgers",
     description:
-      "Discover the team, mission, and vision behind Cyberpeers. We combine technology, creativity, and strategy to help businesses scale with measurable results.",
-    url: "https://cyberpeers.co.uk/about",
-    siteName: "Cyberpeers",
+      "Discover the full Patty Bros menu — smash burgers, loaded fries, chicken burgers, sides, and drinks made with fresh premium ingredients in London.",
+    url: "https://patty-bros.co.uk/menu",
+    siteName: "Patty Bros",
     images: [
       {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "About Cyberpeers Digital Marketing & Tech Agency",
+        alt: "Patty Bros Menu - Smash Burgers & Fries",
       },
     ],
-    locale: "en_US",
+    locale: "en_GB",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "About Cyberpeers | Digital Marketing & Tech Agency",
+    title: "Our Menu | Patty Bros Smash Burgers",
     description:
-      "Meet the experts behind Cyberpeers — delivering innovative web, SEO, branding, and marketing solutions.",
+      "Browse Patty Bros menu featuring smash burgers, loaded fries, chicken burgers, and more.",
     images: ["/logo.png"],
   },
 
   alternates: {
-    canonical: "https://cyberpeers.co.uk/about",
+    canonical: "https://patty-bros.co.uk/menu",
   },
 };
 
 
-export default function AboutLayout({
+export default function MenuLayout({
   children,
 }: {
   children: React.ReactNode;

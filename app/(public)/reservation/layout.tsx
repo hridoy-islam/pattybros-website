@@ -3,55 +3,52 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "Reservations",
-
+  title: "Reservation",
   description:
-    "Learn more about Cyberpeers — a UK-based digital marketing and technology agency helping brands grow through web development, SEO, branding, UI/UX design, and performance marketing.",
-
+    "Book a table at Patty Bros, London’s favourite smash burger restaurant. Reserve your spot for fresh burgers, loaded fries, and a premium street food dining experience.",
   keywords: [
-    "About Cyberpeers",
-    "Cyberpeers Team",
-    "Digital Marketing Experts UK",
-    "Web Development Agency UK",
-    "SEO Specialists",
-    "Performance Marketing Agency",
-    "Creative Tech Team",
-    "Brand Strategy Agency",
+    "Patty Bros Reservation",
+    "Book Table London Burger Restaurant",
+    "Smash Burger Booking UK",
+    "Restaurant Reservation London",
+    "Peckham Burger Table Booking",
+    "London Food Reservation",
+    "Burger Restaurant Booking System",
+    "Dine In Patty Bros",
   ],
 
   openGraph: {
-    title: "Our Menu | Smash Burgers & Fries",
+    title: "Reserve a Table | Patty Bros",
     description:
-      "Discover the team, mission, and vision behind Cyberpeers. We combine technology, creativity, and strategy to help businesses scale with measurable results.",
-    url: "https://cyberpeers.co.uk/about",
-    siteName: "Cyberpeers",
+      "Book your table at Patty Bros and enjoy fresh smash burgers, loaded fries, and street food favourites in London.",
+    url: "https://patty-bros.co.uk/reservation",
+    siteName: "Patty Bros",
     images: [
       {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "About Cyberpeers Digital Marketing & Tech Agency",
+        alt: "Patty Bros Table Reservation",
       },
     ],
-    locale: "en_US",
+    locale: "en_GB",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "About Cyberpeers | Digital Marketing & Tech Agency",
+    title: "Reserve a Table | Patty Bros",
     description:
-      "Meet the experts behind Cyberpeers — delivering innovative web, SEO, branding, and marketing solutions.",
+      "Book your table at Patty Bros London and enjoy premium smash burgers and street food.",
     images: ["/logo.png"],
   },
 
   alternates: {
-    canonical: "https://cyberpeers.co.uk/about",
+    canonical: "https://patty-bros.co.uk/reservation",
   },
 };
 
-
-export default function AboutLayout({
+export default function ReservationLayout({
   children,
 }: {
   children: React.ReactNode;

@@ -4,54 +4,47 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Gallery",
-
   description:
-    "Learn more about Cyberpeers — a UK-based digital marketing and technology agency helping brands grow through web development, SEO, branding, UI/UX design, and performance marketing.",
-
+    "Explore the Patty Bros gallery showcasing our smash burgers, loaded fries, drinks, and delicious street food from our London restaurant. See what makes our food special.",
   keywords: [
-    "About Cyberpeers",
-    "Cyberpeers Team",
-    "Digital Marketing Experts UK",
-    "Web Development Agency UK",
-    "SEO Specialists",
-    "Performance Marketing Agency",
-    "Creative Tech Team",
-    "Brand Strategy Agency",
+    "Patty Bros Gallery",
+    "Smash Burger Photos",
+    "London Burger Restaurant Images",
+    "Burger Shop Peckham Gallery",
+    "Street Food London Photos",
+    "Food Gallery UK",
+    "Burger Restaurant Visuals",
   ],
-
   openGraph: {
-    title: "Our Menu | Smash Burgers & Fries",
+    title: "Patty Bros Gallery | Smash Burgers & Street Food",
     description:
-      "Discover the team, mission, and vision behind Cyberpeers. We combine technology, creativity, and strategy to help businesses scale with measurable results.",
-    url: "https://cyberpeers.co.uk/about",
-    siteName: "Cyberpeers",
+      "Take a look at Patty Bros’ gallery featuring juicy smash burgers, loaded fries, and our signature London street food experience.",
+    url: "https://patty-bros.co.uk/gallery",
+    siteName: "Patty Bros",
     images: [
       {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "About Cyberpeers Digital Marketing & Tech Agency",
+        alt: "Patty Bros Food Gallery",
       },
     ],
-    locale: "en_US",
+    locale: "en_GB",
     type: "website",
   },
-
   twitter: {
     card: "summary_large_image",
-    title: "About Cyberpeers | Digital Marketing & Tech Agency",
+    title: "Patty Bros Gallery",
     description:
-      "Meet the experts behind Cyberpeers — delivering innovative web, SEO, branding, and marketing solutions.",
+      "Browse our smash burgers, loaded fries, and street food creations in our London gallery.",
     images: ["/logo.png"],
   },
-
   alternates: {
-    canonical: "https://cyberpeers.co.uk/about",
+    canonical: "https://patty-bros.co.uk/gallery",
   },
 };
 
-
-export default function AboutLayout({
+export default function GalleryLayout({
   children,
 }: {
   children: React.ReactNode;
