@@ -14,6 +14,7 @@ const GALLERY_ITEMS = [
   // { src: "/Wine & Dine.jpg", title: "Wine & Dine" },
 ];
 
+
 export default function GalleryInfoSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
