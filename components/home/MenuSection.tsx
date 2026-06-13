@@ -6,23 +6,28 @@ const MENU_ITEMS = [
   { 
     name: "Classic Smash", 
     price: "£10.50", 
-    desc: "Potato Bun, Dry Aged Beef Patties, Mature Cheddar, Pickles, Bro's Sauce." 
+    desc: "Potato Bun, Dry Aged Beef Patties, Mature Cheddar, Bro’s Sauce, Pickles, Diced Onion" 
   },
   { 
-    name: "Double Beef Mac", 
-    price: "£12.50", 
-    desc: "Double dry aged beef, double cheddar, shredded lettuce, and house signature sauce." 
+    name: "Bro’s Special", 
+    price: "£11.50", 
+    desc: "Potato Bun, Dry Aged Beef Patties, American Cheese, Smoked Bacon, Onion Ring, Bro’s Sauce, Pickles, Diced Onion, Lollo Bionda Lettuce" 
   },
   { 
-    name: "The Green Smash", 
-    price: "£9.50", 
-    desc: "Plant-based smash patty, vegan cheddar style slice, fresh organic veggies." 
+    name: "Honey Jalapeno Smash", 
+    price: "£11.50", 
+    desc: "Potato Bun, Dry Aged Beef Patties, American Cheese, Hot Jalapeno Jam, Pickles, Diced Onion, Lollo Bionda Lettuce" 
   },
   { 
-    name: "Truffle Loaded Fries", 
-    price: "£6.50", 
-    desc: "Skin-on rustic fries drenched in luxurious black truffle mayo and fresh chives." 
+    name: "Chicky Crunch Burger", 
+    price: "£10.50", 
+    desc: "Potato Bun, Free-range Chicken Fillet, American Cheese, Ranch Mayo, Pickles, Creamy Coleslaw, Lollo Bionda Lettuce" 
   },
+  { 
+    name: "Veggie Burger", 
+    price: "£10.00", 
+    desc: "Potato Bun, Veggie Patty, American Cheese(Veg), Kimchi, Pickle, Veggie Sauce, Lollo Bionda Lettuce" 
+  }
 ];
 
 export default function MenuSection() {
