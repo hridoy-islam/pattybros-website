@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -39,8 +38,10 @@ export default function SignInPage() {
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
 
-  // Fixed selector compilation logic by safely handling fallback values inside the hook callback context
-  const { user, loading, error } = useSelector((state: any) => state?.auth || { user: null, loading: false, error: null });
+  // Safe fallback selector handling inside context
+  const { user, loading, error } = useSelector(
+    (state: any) => state?.auth || { user: null, loading: false, error: null }
+  );
 
   useEffect(() => {
     if (!user) return;
@@ -107,12 +108,7 @@ export default function SignInPage() {
 
       {/* Right Column: High Fidelity Shadcn UI Login Frame */}
       <div className="col-span-1 lg:col-span-5 flex flex-col justify-center px-6 sm:px-12 md:px-20 py-12 relative z-10 bg-zinc-950 border-l border-zinc-900 h-full">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="space-y-8 w-full max-w-sm mx-auto"
-        >
+        <div className="space-y-8 w-full max-w-sm mx-auto">
           {/* Back to home utility row */}
           <div>
             <Link
@@ -136,14 +132,10 @@ export default function SignInPage() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
               {/* Dynamic Error Messaging Container */}
               {error && (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="bg-red-950/40 border border-red-900 text-red-400 p-3 rounded-sm text-xs flex items-center gap-2.5 font-medium"
-                >
+                <div className="bg-red-950/40 border border-red-900 text-red-400 p-3 rounded-sm text-xs flex items-center gap-2.5 font-medium">
                   <ShieldAlert className="w-4 h-4 shrink-0" />
                   <span>{error}</span>
-                </motion.div>
+                </div>
               )}
 
               {/* Email Form Field */}
@@ -202,7 +194,7 @@ export default function SignInPage() {
               </Button>
             </form>
           </Form>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
