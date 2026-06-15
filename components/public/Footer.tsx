@@ -24,12 +24,13 @@ const restaurantNavItems = [
   { label: "Home", href: "/" },
   { label: "Our Menu", href: "/menu" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Reservation", href: "/reservation" },
-  { label: "Click & Collect", href: "/takeaway" },
-  { label: "About Us", href: "/about" },
+  { label: "Reservation", href: "/book-a-table" },
+  { label: "Click & Collect", href: "/click-and-collect" },
+  { label: "About Us", href: "/about-us" },
   { label: "Contact", href: "/contact" },
 ];
 
+ 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 

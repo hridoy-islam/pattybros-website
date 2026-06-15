@@ -18,28 +18,33 @@ const fontSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://patty-bros.co.uk"),
+  metadataBase: new URL("https://www.patty-bros.co.uk"),
+
   title: {
-    default: "Patty Bro's | Smash Burger Restaurant in London",
-    template: "%s | Patty Bro's",
+    default: "Patty Bros Peckham | Smash Burgers, Loaded Fries & Street Food",
+    template: "%s | Patty Bros",
   },
+
   description:
-    "Patty Bros is a UK-based smash burger restaurant in London, serving fresh, high-quality burgers, loaded fries, and street food favourites with bold flavour and premium ingredients.",
+    "Patty Bros in Peckham serves proper smash burgers made with quality British aged beef, loaded fries, bold sauces and fresh comfort food in South East London.",
+
   keywords: [
-    "Patty Bros",
+    "Patty Bros Peckham",
+    "Smash Burgers Peckham",
     "Smash Burger London",
-    "Burger Restaurant UK",
+    "Loaded Fries London",
+    "Street Food Peckham",
+    "Burger Shop South East London",
+    "British Aged Beef Burgers",
     "Best Burgers Peckham",
-    "London Street Food",
-    "Fast Food Restaurant",
-    "Chicken Burgers",
-    "Loaded Fries",
     "Burger Delivery London",
-    "Peckham Burger Shop",
+    "Comfort Food London",
   ],
+
   authors: [{ name: "Patty Bros" }],
   creator: "Patty Bros",
   publisher: "Patty Bros",
+
   robots: {
     index: true,
     follow: true,
@@ -51,6 +56,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -71,34 +77,39 @@ export const metadata: Metadata = {
       },
     ],
   },
+
   manifest: "/site.webmanifest",
+
   openGraph: {
-    title: "Patty Bros | Smash Burger Restaurant in London",
+    title: "Patty Bros Peckham | Smash Burgers, Loaded Fries & Street Food",
     description:
-      "Enjoy bold, juicy smash burgers and loaded fries at Patty Bros. A modern London burger restaurant serving fresh street food favourites.",
-    url: "https://patty-bros.co.uk",
+      "Patty Bros in Peckham serves proper smash burgers made with quality British aged beef, loaded fries, bold sauces and fresh comfort food in South East London.",
+    url: "https://www.patty-bros.co.uk",
     siteName: "Patty Bros",
     images: [
       {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "Patty Bros Smash Burger Restaurant",
+        alt: "Patty Bros Smash Burgers Peckham",
       },
     ],
     locale: "en_GB",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Patty Bros | Smash Burger Restaurant in London",
+    title: "Patty Bros Peckham | Smash Burgers, Loaded Fries & Street Food",
     description:
-      "Fresh smash burgers, loaded fries, and street food favourites in London.",
+      "Proper smash burgers, loaded fries, bold sauces and fresh comfort food in South East London.",
     images: ["/logo.png"],
   },
+
   alternates: {
-    canonical: "https://patty-bros.co.uk",
+    canonical: "https://www.patty-bros.co.uk",
   },
+
   category: "food",
   applicationName: "Patty Bros",
 };

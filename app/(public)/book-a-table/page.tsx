@@ -184,9 +184,13 @@ export default function ReservationPage() {
     try {
       setLoading(true);
 
-      // 3. Professional Timezone Handling
-      const dateString = moment(selectedDate).format("YYYY-MM-DD");
-      const finalIsoString = `${dateString}T12:00:00.000Z`;
+      const finalIsoString = new Date(
+        Date.UTC(
+          selectedDate!.getFullYear(),
+          selectedDate!.getMonth(),
+          selectedDate!.getDate()
+        )
+      ).toISOString()  ;
 
       await axiosInstance.post("/reservation", {
         customerName: name,
@@ -478,9 +482,9 @@ export default function ReservationPage() {
                     </span>{" "}
                     on{" "}
                     <span className="text-zinc-900 font-bold">
-                      {selectedDate
-                        ? moment(selectedDate).format("MMMM Do, YYYY")
-                        : ""}
+                  {selectedDate
+  ? `${selectedDate.getDate()} ${selectedDate.toLocaleString("en-GB", { month: "long" })} ${selectedDate.getFullYear()}`
+  : ""}
                     </span>{" "}
                     at{" "}
                     <span className="text-zinc-900 font-bold">

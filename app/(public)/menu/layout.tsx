@@ -2,32 +2,35 @@ import type { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "Our Menu",
+  title: "Patty Bros Menu | Smash Burgers, Loaded Fries & Sides Peckham",
   description:
-    "Explore the Patty Bros menu featuring juicy smash burgers, loaded fries, chicken burgers, sides, and drinks. Fresh, bold flavours served in London’s favourite burger spot.",
+    "Explore the Patty Bros menu with smash burgers, melted cheese, loaded fries, sides, sauces and quality street food made fresh in Peckham, London.",
+
   keywords: [
     "Patty Bros Menu",
-    "Smash Burger Menu London",
+    "Smash Burger Menu Peckham",
+    "Smash Burger London",
+    "Loaded Fries Peckham",
+    "Burger Sides London",
+    "Street Food Peckham",
+    "Quality Burgers London",
+    "Chicken Burgers Peckham",
     "Burger Restaurant Menu UK",
-    "Loaded Fries Menu",
-    "Chicken Burgers London",
-    "Best Burgers Peckham Menu",
-    "Street Food Menu London",
-    "Fast Food Menu UK",
+    "Patty Bros Food Menu",
   ],
 
   openGraph: {
-    title: "Our Menu | Patty Bros Smash Burgers",
+    title: "Patty Bros Menu | Smash Burgers, Loaded Fries & Sides Peckham",
     description:
-      "Discover the full Patty Bros menu — smash burgers, loaded fries, chicken burgers, sides, and drinks made with fresh premium ingredients in London.",
-    url: "https://patty-bros.co.uk/menu",
+      "Explore the Patty Bros menu with smash burgers, melted cheese, loaded fries, sides, sauces and quality street food made fresh in Peckham, London.",
+    url: "https://www.patty-bros.co.uk/menu",
     siteName: "Patty Bros",
     images: [
       {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "Patty Bros Menu - Smash Burgers & Fries",
+        alt: "Patty Bros Menu - Smash Burgers, Loaded Fries & Sides",
       },
     ],
     locale: "en_GB",
@@ -36,14 +39,14 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Our Menu | Patty Bros Smash Burgers",
+    title: "Patty Bros Menu | Smash Burgers, Loaded Fries & Sides Peckham",
     description:
-      "Browse Patty Bros menu featuring smash burgers, loaded fries, chicken burgers, and more.",
+      "Browse Patty Bros menu featuring smash burgers, loaded fries, sauces, sides and fresh street food made in Peckham, London.",
     images: ["/logo.png"],
   },
 
   alternates: {
-    canonical: "https://patty-bros.co.uk/menu",
+    canonical: "https://www.patty-bros.co.uk/menu",
   },
 };
 

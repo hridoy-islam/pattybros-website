@@ -23,8 +23,8 @@ const restaurantNavItems = [
   { label: "Home", href: "/" },
   { label: "Our Menu", href: "/menu" },
   { label: "Gallery", href: "/gallery" },
-  { label: "Click & Collect", href: "/takeaway" },
-  { label: "About Us", href: "/about" },
+  { label: "Click & Collect", href: "/click-and-collect" },
+  { label: "About Us", href: "/about-us" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -124,7 +124,7 @@ export function Header() {
 
           {/* CTA Actions Block */}
           <div className="flex items-center gap-4">
-            <Link href="/reservation" className="hidden md:block">
+            <Link href="/book-a-table" className="hidden md:block">
               <Button
                 className={cn(
                   "font-extrabold tracking-wider transition-all duration-300 rounded-full",

@@ -1,44 +1,49 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact Patty Bros Peckham | Burger Shop on Rye Lane",
+
   description:
-    "Get in touch with Patty Bros, a smash burger restaurant in London. Contact us for orders, delivery inquiries, catering, feedback, or general support.",
+    "Visit Patty Bros at Unit 10, The Aylesham Shopping Centre, Rye Lane, Peckham, London SE15 5EW for smash burgers, loaded fries and street food.",
+
   keywords: [
     "Contact Patty Bros",
+    "Patty Bros Peckham Contact",
     "Smash Burger London Contact",
-    "Burger Restaurant Support UK",
-    "Patty Bros Contact Details",
-    "London Burger Delivery Contact",
-    "Peckham Burger Shop Contact",
-    "Food Order Inquiry London",
+    "Burger Shop Rye Lane",
+    "Peckham Burger Restaurant",
+    "Food Order Contact London",
+    "Burger Delivery Support UK",
   ],
+
   openGraph: {
-    title: "Contact Patty Bros",
+    title: "Contact Patty Bros Peckham | Burger Shop on Rye Lane",
     description:
-      "Reach out to Patty Bros for orders, delivery support, catering inquiries, or feedback. We're here to help you enjoy the best smash burgers in London.",
-    url: "https://patty-bros.co.uk/contact",
+      "Visit or contact Patty Bros at Unit 10, The Aylesham Shopping Centre, Rye Lane, Peckham, London SE15 5EW for smash burgers, loaded fries and street food.",
+    url: "https://www.patty-bros.co.uk/contact",
     siteName: "Patty Bros",
     images: [
       {
         url: "/logo.png",
         width: 1200,
         height: 630,
-        alt: "Contact Patty Bros",
+        alt: "Contact Patty Bros Peckham",
       },
     ],
     locale: "en_GB",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Contact Patty Bros",
+    title: "Contact Patty Bros Peckham | Burger Shop on Rye Lane",
     description:
-      "Get in touch with Patty Bros for orders, delivery, catering, or support in London.",
+      "Visit Patty Bros in Peckham at Rye Lane for smash burgers, loaded fries and street food.",
     images: ["/logo.png"],
   },
+
   alternates: {
-    canonical: "https://patty-bros.co.uk/contact",
+    canonical: "https://www.patty-bros.co.uk/contact",
   },
 };
 
