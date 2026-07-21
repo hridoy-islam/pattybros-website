@@ -234,7 +234,7 @@ export default function AboutSection() {
                 Explore Our Menu
               </Button>
               <Button
-                onClick={() => router.push("/takeaway")}
+                onClick={() => router.push("/click-and-collect")}
                 variant="outline"
                 className="border-2 border-neutral-900  hover:bg-neutral-900 hover:text-white px-8 py-6 rounded-xl text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
               >

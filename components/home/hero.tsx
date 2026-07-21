@@ -132,7 +132,7 @@ export default function Hero() {
           </h3>
 
           <div ref={buttonsRef} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4 max-w-md sm:max-w-none">
-            <Link href="/takeaway">
+            <Link href="/click-and-collect">
               <Button
                 className="w-full sm:w-auto bg-primary-foreground hover:bg-primary-foreground/95 uppercase tracking-wider px-10 py-7 text-sm rounded-none transition-transform duration-300 hover:-translate-y-0.5"
               >

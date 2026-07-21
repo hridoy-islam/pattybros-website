@@ -20,6 +20,7 @@ import SmoothScroll from "@/components/shared/smooth-scroll";
 import { Button } from "@/components/ui/button";
 import axiosInstance from "@/lib/axios"; 
 import { BlinkingDots } from "@/components/ui/blinking-dots";
+import { useRouter } from "next/navigation";
 
 // --- TypeScript Interfaces matching your real API structure ---
 interface Category {
@@ -92,7 +93,7 @@ export default function MenuPage() {
   const [menuData, setMenuData] = useState<TransformedMenuSection[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
+  const router = useRouter();
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -178,7 +179,7 @@ export default function MenuPage() {
             </div>
 
             <div className="shrink-0 relative z-10 w-full md:w-auto">
-              <Button className="inline-flex items-center justify-center py-6 tracking-widest rounded-full px-8 shadow-lg transition-all w-full md:w-auto text-center text-md bg-red-600 hover:bg-red-700 text-white border-none">
+              <Button onClick={()=> router.push('/click-and-collect')} className="inline-flex items-center justify-center py-6 tracking-widest rounded-full px-8 shadow-lg transition-all w-full md:w-auto text-center text-md bg-red-600 hover:bg-red-700 text-white border-none">
                 Order Now <ArrowUpRight className="w-4 h-4 ml-1.5 stroke-[2.5]" />
               </Button>
             </div>

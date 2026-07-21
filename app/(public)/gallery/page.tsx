@@ -307,7 +307,7 @@ export default function GalleryPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-                <Button onClick={() => router.push("/takeaway")} className="inline-flex items-center justify-center py-8 px-10 rounded-full font-black uppercase tracking-widest text-sm bg-red-600 hover:bg-red-700 text-white border-none shadow-lg shadow-red-600/20 transition-all hover:shadow-red-600/40">
+                <Button onClick={() => router.push("/click-and-collect")} className="inline-flex items-center justify-center py-8 px-10 rounded-full font-black uppercase tracking-widest text-sm bg-red-600 hover:bg-red-700 text-white border-none shadow-lg shadow-red-600/20 transition-all hover:shadow-red-600/40">
                   Order Online <ArrowUpRight className="w-4 h-4 ml-1.5 stroke-[2.5]" />
                 </Button>
                 <Button onClick={() => router.push("/menu")} className="inline-flex items-center justify-center py-8 px-10 rounded-full font-black uppercase tracking-widest text-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-sm transition-all">
