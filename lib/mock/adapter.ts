@@ -1,6 +1,6 @@
 // A mock backend behind axios. It answers the same routes, with the same response shapes, as the real
 // API is expected to (the Patty Bros API conventions: { success, message, data } and paginated
-// { result, meta }). lib/axios.ts plugs it in while NEXT_PUBLIC_USE_MOCK is not "false".
+// { result, meta }). lib/axios.ts plugs it in while USE_MOCK there is true.
 import type { AxiosAdapter, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import { loadDb, saveDb } from "./db";
 import type { Booking, MockDb, ServiceItem, TokenUser, User } from "@/types";

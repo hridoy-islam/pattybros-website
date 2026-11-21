@@ -5,6 +5,7 @@ import { isBookable } from "@/lib/availability";
 import { day, now } from "@/lib/moment-setup";
 import { deposit, site } from "@/lib/site";
 import { sendMail, studioEmail } from "@/lib/mailer";
+import { stripeSecretKey } from "@/lib/config";
 
 const schema = z.object({
   treatment: z.string().min(1),
@@ -56,7 +57,7 @@ export async function POST(req: Request) {
   // Card deposit through Stripe Checkout, when a key is set
   let checkoutUrl: string | null = null;
   if (depositDue && data.depositMethod === "card") {
-    const key = process.env.STRIPE_SECRET_KEY;
+    const key = stripeSecretKey;
     if (!key) {
       return NextResponse.json(
         { error: "Card payments are not switched on yet. Choose bank transfer for the deposit." },

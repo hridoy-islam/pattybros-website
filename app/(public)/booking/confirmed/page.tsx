@@ -3,6 +3,7 @@ import Link from "next/link";
 import Header from "@/components/public/Header";
 import SiteFooter from "@/components/public/SiteFooter";
 import { sendMail, studioEmail } from "@/lib/mailer";
+import { stripeSecretKey } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Booking confirmed",
@@ -14,7 +15,7 @@ export const dynamic = "force-dynamic";
 
 // Stripe sends the client back here after the card deposit. We check the payment with Stripe before saying so.
 async function checkPayment(sessionId?: string) {
-  const key = process.env.STRIPE_SECRET_KEY;
+  const key = stripeSecretKey;
   if (!key || !sessionId) return null;
   const res = await fetch(`https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(sessionId)}`, {
     headers: { Authorization: `Bearer ${key}` },

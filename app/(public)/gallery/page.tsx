@@ -5,10 +5,12 @@ import SiteFooter from "@/components/public/SiteFooter";
 import ActionBar from "@/components/public/ActionBar";
 import PageHero from "@/components/public/PageHero";
 import SetChapters from "@/components/gallery/SetChapters";
+import BeforeAfter, { type BeforeAfterPair } from "@/components/gallery/BeforeAfter";
+import VideoClips, { type Clip } from "@/components/gallery/VideoClips";
 
 export const metadata: Metadata = {
-  title: "Lash gallery: classic, hybrid, volume and wispy sets",
-  description: "Classic, hybrid, Russian volume and wispy lash sets and close-ups from LashesByZee in Dartford, Kent.",
+  title: "Lash gallery: before and after, sets, close-ups and videos",
+  description: "Before and after pictures, classic, hybrid, Russian volume and wispy lash sets, close-ups and short videos from LashesByZee in Dartford, Kent.",
 };
 
 // Stand-in photographs until Zee's own work is shot: swap each src for her photographs in /public/images.
@@ -43,15 +45,37 @@ const styles = [
   },
 ];
 
+// Stand-in pairs (different people): replace with Zee's own before and after photographs of one client.
+const pairs: BeforeAfterPair[] = [
+  {
+    title: "Russian volume set",
+    before: { src: "/images/before-open-eye.jpg", alt: "A brown eye with short, sparse natural lashes" },
+    after: { src: "/images/eye-warm-1.jpg", alt: "A brown eye with long, dark, curled lash extensions" },
+  },
+  {
+    title: "Mega volume set",
+    before: { src: "/images/before-side-eye.jpg", alt: "Side view of an eye with fine natural lashes", pos: "30% 50%" },
+    after: { src: "/images/set-mega-volume.jpg", alt: "Side view of an eye with very full, dark mega volume lashes" },
+  },
+  {
+    title: "Statement set",
+    before: { src: "/images/before-closed-eye.jpg", alt: "A closed eye with natural, uncurled lashes" },
+    after: { src: "/images/set-anime.jpg", alt: "Eyes looking down, wearing long, glittering statement lashes" },
+  },
+];
+
 const closeUps = [
-  { src: "/images/set-mega-volume.jpg", alt: "Side view of an eye with very full, dark mega volume lashes" },
-  { src: "/images/set-anime.jpg", alt: "Eyes looking down, wearing long, glittering statement lashes" },
-  { src: "/images/eye-warm-1.jpg", alt: "A brown eye with long, curled lash extensions" },
-  { src: "/images/eye-warm-2.jpg", alt: "A blue eye with long, dark lash extensions in warm light" },
   { src: "/images/tweezers-application.jpg", alt: "Two pairs of tweezers placing extensions on a closed eye" },
   { src: "/images/lash-application-closeup.jpg", alt: "Extensions being placed one by one on a client's lashes" },
-  { src: "/images/artist-portrait-2.jpg", alt: "A lash artist working on a client by a sunny window" },
+  { src: "/images/eye-warm-2.jpg", alt: "A blue eye with long, dark lash extensions in warm light" },
   { src: "/images/eye-warm-3.jpg", alt: "An eye with soft, natural lash extensions in warm light" },
+];
+
+// Short videos: add each clip to /public/videos and set its src; the poster shows until then.
+const clips: Clip[] = [
+  { poster: "/images/artist-portrait-1.jpg", label: "Zee placing lash extensions on a client" },
+  { poster: "/images/artist-at-work.jpg", label: "Lash extensions being mapped and placed" },
+  { poster: "/images/lash-tray-tweezers.jpg", label: "A tray of lash fans and tweezers ready for a set" },
 ];
 
 export default function GalleryPage() {
@@ -61,13 +85,15 @@ export default function GalleryPage() {
       <main id="top">
         <PageHero
           title="Lash gallery: sets and close-ups"
-          lead="Classic, hybrid, Russian volume and wispy sets, up close."
+          lead="Before and after pictures, classic, hybrid, Russian volume and wispy sets, close-ups and short videos."
           photo={{
             src: "/images/hero-lash-application.jpg",
             alt: "A lash artist placing extensions with fine tweezers on a client with her eyes closed",
             pos: "50% 45%",
           }}
         />
+
+        <BeforeAfter pairs={pairs} />
 
         <SetChapters sets={styles} />
 
@@ -90,6 +116,8 @@ export default function GalleryPage() {
             </div>
           </div>
         </section>
+
+        <VideoClips clips={clips} />
       </main>
       <SiteFooter close={{ title: "Love a look? Book it", line: "Tell Zee which style you like when you book." }} />
       <ActionBar />

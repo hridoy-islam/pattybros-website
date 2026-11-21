@@ -5,7 +5,7 @@ export const site = {
   name: "LashesByZee",
   longName: "Lashes by Zee London",
   tagline: "Luxury lash extensions",
-  url: process.env.SITE_URL || "http://localhost:3000",
+  url: "https://lashesbyzee.com",
   area: "Dartford, Kent",
   areaLine: "Near Dartford Station",
   // "See the area" opens a map search for the district only: no street or postcode until Zee supplies one

@@ -1,11 +1,12 @@
 import nodemailer from "nodemailer";
+import { mail } from "@/lib/config";
 
 export function mailConfigured() {
-  return Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS && process.env.STUDIO_EMAIL);
+  return Boolean(mail.smtpHost && mail.smtpUser && mail.smtpPass && mail.studioEmail);
 }
 
 /**
- * Sends one email. Without SMTP settings it logs the message in development (so the flow can be tried
+ * Sends one email. Without SMTP settings (lib/config.ts) it logs the message in development (so the flow can be tried
  * locally) and throws in production, so a visitor never sees a confirmation for a message that went nowhere.
  */
 export async function sendMail(opts: { to: string; subject: string; text: string; replyTo?: string }) {
@@ -16,15 +17,15 @@ export async function sendMail(opts: { to: string; subject: string; text: string
     }
     throw new Error("Email is not configured");
   }
-  const port = Number(process.env.SMTP_PORT || 465);
+  const port = mail.smtpPort || 465;
   const transport = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
+    host: mail.smtpHost,
     port,
     secure: port === 465,
-    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+    auth: { user: mail.smtpUser, pass: mail.smtpPass },
   });
   await transport.sendMail({
-    from: `LashesByZee <${process.env.SMTP_USER}>`,
+    from: `LashesByZee <${mail.smtpUser}>`,
     to: opts.to,
     subject: opts.subject,
     text: opts.text,
@@ -32,4 +33,4 @@ export async function sendMail(opts: { to: string; subject: string; text: string
   });
 }
 
-export const studioEmail = () => process.env.STUDIO_EMAIL || "studio@lashesbyzee.example";
+export const studioEmail = () => mail.studioEmail || "studio@lashesbyzee.example";

@@ -1,5 +1,5 @@
 // Mock database for the admin. Seeded once, then kept in the browser's localStorage so edits survive a
-// reload. Replace with the real API by setting NEXT_PUBLIC_USE_MOCK=false (see lib/axios.ts).
+// reload. Replace with the real API by setting USE_MOCK to false and API_URL in lib/axios.ts.
 import { treatments as seedTreatments } from "@/lib/services";
 import { hours as seedHours, deposit as seedDeposit, site } from "@/lib/site";
 import type { Booking, BookingStatus, MockDb, ServiceItem, StudioSettings, User } from "@/types";

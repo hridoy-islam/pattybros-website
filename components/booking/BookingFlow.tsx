@@ -21,6 +21,7 @@ const toggleBtn =
 
 export default function BookingFlow({ initialTreatment, cardEnabled }: { initialTreatment?: string; cardEnabled: boolean }) {
   const [step, setStep] = useState<Step>(1);
+  const [category, setCategory] = useState<string>("all");
   const [treatmentId, setTreatmentId] = useState<string>(findTreatment(initialTreatment)?.id ?? "");
   const [date, setDate] = useState<string>("");
   const [time, setTime] = useState<string>("");
@@ -62,13 +63,14 @@ export default function BookingFlow({ initialTreatment, cardEnabled }: { initial
     setStep(next);
   }
 
-  function nextFromTreatment() {
-    if (!t) {
-      setErrors({ treatment: "Choose the treatment you would like." });
-      setStatus("1 field to fix.");
-      return;
-    }
-    if (date && !slotsFor(date, t.minutes).includes(time)) setTime("");
+  // "Book now" on a row: choose that treatment and go straight to the date step
+  function bookNow(id: string) {
+    const picked = findTreatment(id);
+    if (!picked) return;
+    setTreatmentId(id);
+    setErrors({});
+    setStatus("");
+    if (date && !slotsFor(date, picked.minutes).includes(time)) setTime("");
     goTo(2);
   }
 
@@ -144,37 +146,62 @@ export default function BookingFlow({ initialTreatment, cardEnabled }: { initial
             <h2 tabIndex={-1} ref={headRef} className={stepTitle}>
               <span className={stepNo}>1 of 3</span>Choose your treatment
             </h2>
-            {groups.map((g) => (
-              <fieldset key={g.id} aria-describedby={errors.treatment ? "b-treatment-err" : undefined}>
-                <legend className="mb-1 mt-4 text-[13px] font-medium">{g.label}</legend>
-                {treatments
-                  .filter((x) => x.group === g.id)
-                  .map((x) => (
-                    <label key={x.id} className={choiceRow}>
-                      <input
-                        type="radio"
-                        name="treatment"
-                        id={x.id === treatments[0].id ? "b-treatment" : undefined}
-                        value={x.id}
-                        checked={treatmentId === x.id}
-                        onChange={() => setTreatmentId(x.id)}
-                        className={radio}
-                      />
-                      <span className="choice-name font-medium">{x.name}</span>
-                      <span className="font-medium tabular-nums">{formatPrice(x.price)}</span>
-                      <span className="col-start-2 text-muted">
-                        {formatDuration(x.minutes)} · {x.short}
-                      </span>
-                    </label>
-                  ))}
-              </fieldset>
-            ))}
-            {fieldError("treatment")}
-            <div>
-              <button className="btn-primary w-full sm:w-auto" type="button" onClick={nextFromTreatment}>
-                Choose a date
-              </button>
+            {/* the categories filter the list, like a salon booking page; "Book now" picks the treatment and moves on */}
+            <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+              <div role="group" aria-label="Filter treatments" className="flex min-w-max border-b border-line">
+                {[{ id: "all", label: "All treatments" }, ...groups].map((g) => (
+                  <button
+                    key={g.id}
+                    type="button"
+                    aria-pressed={category === g.id}
+                    onClick={() => setCategory(g.id)}
+                    className="-mb-px min-h-12 border-b-2 border-transparent px-4 text-[15px] transition-colors first:pl-0 hover:text-primary-dark aria-pressed:border-ink aria-pressed:font-medium"
+                  >
+                    {g.label}
+                  </button>
+                ))}
+              </div>
             </div>
+            <ul>
+              {treatments
+                .filter((x) => category === "all" || x.group === category)
+                .map((x) => (
+                  <li
+                    key={x.id}
+                    className="grid grid-cols-[72px_1fr] gap-x-4 gap-y-3 border-b border-line py-6 sm:grid-cols-[84px_1fr_auto_auto] sm:items-start sm:gap-x-6"
+                  >
+                    <div className="row-span-2 h-[72px] w-[72px] overflow-hidden bg-cream sm:row-span-1 sm:h-[84px] sm:w-[84px]">
+                      <img
+                        src={x.image?.src || "/logo-256.png"}
+                        alt=""
+                        loading="lazy"
+                        className={x.image ? "h-full w-full object-cover" : "h-full w-full object-contain p-3"}
+                      />
+                    </div>
+                    <div>
+                      <h3 className="font-display text-[22px] leading-snug">{x.name}</h3>
+                      <Link
+                        href={`/services#${x.id}`}
+                        className="mt-1 inline-flex min-h-9 items-center text-[15px] underline underline-offset-4 transition-colors hover:text-primary-dark"
+                      >
+                        More info<span className="sr-only"> about {x.name}</span>
+                      </Link>
+                    </div>
+                    <p className="col-start-2 text-[15px] tabular-nums sm:col-start-3 sm:min-w-[96px] sm:pt-1">
+                      <span className="block">{formatDuration(x.minutes)}</span>
+                      <span className="block font-medium">{formatPrice(x.price)}</span>
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => bookNow(x.id)}
+                      aria-label={`Book now: ${x.name}`}
+                      className="btn-primary col-span-2 h-11 w-full px-6 sm:col-span-1 sm:w-auto"
+                    >
+                      Book now
+                    </button>
+                  </li>
+                ))}
+            </ul>
           </div>
         )}
 

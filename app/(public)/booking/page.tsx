@@ -4,6 +4,7 @@ import SiteFooter from "@/components/public/SiteFooter";
 import PageHero from "@/components/public/PageHero";
 import BookingFlow from "@/components/booking/BookingFlow";
 import Policy from "@/components/booking/Policy";
+import { stripeSecretKey } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Book a lash appointment",
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default function BookingPage({ searchParams }: { searchParams: { t?: string } }) {
-  const cardEnabled = Boolean(process.env.STRIPE_SECRET_KEY);
+  const cardEnabled = Boolean(stripeSecretKey);
   return (
     <>
       <Header current="/booking" />

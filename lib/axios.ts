@@ -3,11 +3,12 @@ import { mockAdapter } from "@/lib/mock/adapter";
 
 export const TOKEN_KEY = "lashesbyzee";
 
-// Mock data until the API exists: set NEXT_PUBLIC_USE_MOCK=false and NEXT_PUBLIC_API_URL to switch over.
-export const USE_MOCK = process.env.NEXT_PUBLIC_USE_MOCK !== "false";
+// Mock data until the API exists: set USE_MOCK to false and API_URL to the API's address to switch over.
+export const USE_MOCK = true;
+const API_URL = "";
 
 const axiosInstance = axios.create({
-  baseURL: USE_MOCK ? "" : process.env.NEXT_PUBLIC_API_URL,
+  baseURL: USE_MOCK ? "" : API_URL,
   withCredentials: true,
   headers: { "Content-Type": "application/json" },
   adapter: USE_MOCK ? mockAdapter : undefined,

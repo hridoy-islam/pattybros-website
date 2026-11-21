@@ -32,7 +32,7 @@ const footerLink =
 // Espresso footer with gold accents: the booking call, then the directory and the legal row.
 export default function SiteFooter({ close }: { close: Close }) {
   return (
-    <footer className="mt-10 bg-espresso pb-8 pt-16 text-ivory md:mt-16 md:pt-24" aria-labelledby="close-h">
+    <footer className="mt-10 bg-black/95 pb-8 pt-16 text-ivory md:mt-16 md:pt-24" aria-labelledby="close-h">
       <div className="container">
         <div className="flex flex-wrap items-end justify-between gap-6 border-b border-primary/35 pb-12 md:pb-20">
           <div>

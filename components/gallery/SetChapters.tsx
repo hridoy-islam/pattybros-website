@@ -102,7 +102,7 @@ export default function SetChapters({ sets }: { sets: LashSet[] }) {
                     key={s.id}
                     className={`[grid-area:1/1] transition-[opacity,transform] ${
                       i === on
-                        ? "translate-y-0 opacity-100 delay-[60ms] duration-500 ease-[cubic-bezier(.22,1,.36,1)]"
+                        ? "translate-y-0 opacity-100 [transition-delay:60ms] duration-500 [transition-timing-function:cubic-bezier(.22,1,.36,1)]"
                         : "pointer-events-none translate-y-2 opacity-0 duration-200"
                     }`}
                   >
