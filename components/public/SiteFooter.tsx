@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Arrow from "./Arrow";
 import Hours from "./Hours";
+import SocialLinks from "./SocialLinks";
 import { mainAction, site } from "@/lib/site";
 import { now } from "@/lib/moment-setup";
 
@@ -88,23 +89,8 @@ export default function SiteFooter({ close }: { close: Close }) {
           <Link href="/terms" className="text-ivory transition-colors hover:text-primary">
             Terms
           </Link>
-          {site.instagramUrl ? (
-            <a href={site.instagramUrl} className="text-ivory transition-colors hover:text-primary sm:ml-auto">
-              Instagram
-            </a>
-          ) : null}
+          <SocialLinks className="-ml-2.5 sm:ml-auto sm:mr-[-10px]" />
         </div>
-        <p className="mt-4 text-xs text-espresso-muted">
-          Contact page photograph by{" "}
-          <a href="https://commons.wikimedia.org/wiki/File:The_Art_of_Lash_Isolation_and_Placement.jpg" className="underline underline-offset-2 hover:text-primary">
-            Jameswasswa
-          </a>
-          ,{" "}
-          <a href="https://creativecommons.org/licenses/by-sa/4.0" className="underline underline-offset-2 hover:text-primary">
-            CC BY-SA 4.0
-          </a>
-          .
-        </p>
       </div>
     </footer>
   );

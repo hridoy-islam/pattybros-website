@@ -13,6 +13,12 @@ export const site = {
   // Empty until Zee gives her Instagram account; the links show once this is filled in
   instagramUrl: "",
   instagramHandle: "",
+  // Social profiles shown as icons in the footer. Fill in each URL when Zee gives it; an empty one links to "#" for now
+  socials: {
+    instagram: "",
+    tiktok: "",
+    facebook: "",
+  },
   // Mailto stand-in for buttons; the forms post to /api/* and email STUDIO_EMAIL
   email: "hello@lashesbyzee.example",
   timezone: "Europe/London",
