@@ -1,0 +1,114 @@
+/* Studio admin styles, built on the Tailwind theme (colours and fonts in tailwind.config.ts).
+   Everything is scoped under .adm so it never touches the public site. Buttons, fields, selects,
+   checkboxes and tables are shadcn/ui components in components/ui; dates use react-datepicker
+   (components/ui/date-picker.tsx). You can also use Tailwind classes straight in the admin JSX. */
+
+.adm { @apply min-h-screen bg-ivory text-[15px] leading-relaxed text-ink; }
+.adm h1 { @apply text-[34px] leading-tight; }
+.adm h2 { @apply text-2xl leading-snug; }
+.adm h3 { @apply text-[19px]; }
+.adm .sr-only { @apply absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]; }
+
+/* shell */
+.adm .shell { @apply min-h-screen; }
+.adm .side { @apply fixed inset-y-0 left-0 z-20 flex w-[248px] flex-col gap-6 bg-espresso px-4 py-6 text-ivory transition-transform duration-200 max-lg:-translate-x-full; }
+.adm .side.is-open { @apply max-lg:translate-x-0; }
+.adm .side__brand { @apply flex items-center gap-2.5 px-2 no-underline; }
+.adm .side__brand img { @apply h-10 w-10 rounded-full bg-ivory; }
+.adm .side__brand span { @apply font-display text-[22px] leading-none; }
+.adm .side__nav { @apply grid gap-0.5; }
+.adm .side__link { @apply flex items-center gap-2.5 rounded-md px-3 py-2.5 text-ivory no-underline transition-colors hover:bg-espresso-soft aria-[current=page]:bg-primary aria-[current=page]:font-medium aria-[current=page]:text-primary-foreground; }
+.adm .side__foot { @apply mt-auto grid gap-2 px-2; }
+.adm .side__user { @apply text-[13px] text-[#e8dfd2]; }
+.adm .side__btn { @apply cursor-pointer rounded-md border border-[#5a4f42] bg-transparent px-3 py-2 text-left text-ivory no-underline transition-colors hover:border-primary; }
+.adm .topbar { @apply sticky top-0 z-[15] flex h-14 items-center justify-between bg-espresso px-4 text-ivory lg:hidden; }
+.adm .topbar button { @apply h-10 rounded-md border border-[#5a4f42] bg-transparent px-3.5 text-ivory; }
+/* the page area: the full width beside the sidebar */
+.adm .content { @apply min-w-0 px-4 pb-12 pt-6 lg:ml-[248px] lg:px-10 lg:pb-16 lg:pt-8; }
+
+/* page head */
+.adm .head { @apply mb-6 flex flex-wrap items-end justify-between gap-4; }
+.adm .head p { @apply mt-1 text-muted; }
+.adm .crumb { @apply mb-2 inline-block text-[13px] text-muted no-underline hover:text-ink; }
+
+/* form fields: a shadcn Label over its control (components/admin/ui/Field.tsx) */
+.adm .err { @apply text-[13px] font-medium text-red-800; }
+
+/* cards and grids */
+.adm .card { @apply rounded-[10px] border border-line bg-white p-5; }
+.adm .card + .card { @apply mt-4; }
+.adm .stats { @apply mb-6 grid grid-cols-2 gap-4 lg:grid-cols-4; }
+.adm .stat { @apply rounded-[10px] border border-line bg-white px-5 py-[18px]; }
+.adm .stat__label { @apply text-[13px] text-muted; }
+.adm .stat__value { @apply mt-1.5 font-display text-4xl leading-tight; }
+.adm .stat--gold { @apply border-ink bg-ink text-ivory; }
+.adm .stat--gold .stat__label { @apply text-[#e8dfd2]; }
+.adm .stat--gold .stat__value { @apply text-primary; }
+.adm .form-grid { @apply grid gap-4 sm:grid-cols-2; }
+.adm .form-grid .wide { @apply sm:col-span-2; }
+.adm .two { @apply grid items-start gap-4 lg:grid-cols-[2fr_1fr]; }
+
+/* filters, table box, pager */
+.adm .filters { @apply mb-4 flex flex-wrap gap-2; }
+.adm .table-wrap { @apply overflow-hidden rounded-[10px] border border-line bg-white; }
+.adm .num { @apply whitespace-nowrap tabular-nums; }
+.adm .sub { @apply block text-[13px] text-muted; }
+.adm .empty { @apply px-4 py-10 text-center text-muted; }
+.adm .pager { @apply mt-4 flex flex-wrap items-center justify-between gap-2 text-sm; }
+.adm .pager__btns { @apply flex gap-1.5; }
+
+/* badges */
+.adm .badge { @apply inline-block whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-medium; }
+.adm .badge--pending, .adm .badge--due { @apply border-[#ecd49a] bg-[#fdf3dc] text-[#6b4a0e]; }
+.adm .badge--confirmed, .adm .badge--paid { @apply border-[#b6d9bd] bg-[#e7f3e9] text-[#1f5228]; }
+.adm .badge--completed { @apply border-[#c4c6ea] bg-[#ecebf8] text-[#2c3170]; }
+.adm .badge--cancelled { @apply border-[#e7b9b3] bg-[#f9e7e5] text-[#7c1d14]; }
+.adm .badge--off { @apply border-line bg-cream text-ink; }
+
+/* details list, upcoming list */
+.adm .dl { @apply m-0 grid gap-x-4 gap-y-2.5 sm:grid-cols-[160px_1fr]; }
+.adm .dl dt { @apply text-sm text-muted; }
+.adm .dl dd { @apply m-0 max-sm:mb-2.5; }
+.adm .next { @apply m-0 list-none p-0; }
+.adm .next li { @apply grid grid-cols-[110px_1fr_auto] items-center gap-3 border-b border-line py-3 last:border-b-0; }
+.adm .next time { @apply font-medium tabular-nums; }
+
+/* sign-in */
+.adm .login { @apply grid min-h-screen lg:grid-cols-[7fr_5fr]; }
+.adm .login__art { @apply relative hidden overflow-hidden bg-ink lg:block; }
+.adm .login__art img.bg { @apply absolute inset-0 h-full w-full object-cover opacity-55; }
+.adm .login__art .over { @apply absolute inset-x-12 bottom-12 text-ivory; }
+.adm .login__art .over h1 { @apply text-5xl leading-none text-ivory; }
+.adm .login__art .over p { @apply mt-3 text-base text-primary; }
+.adm .login__form { @apply flex items-center justify-center px-6 py-12; }
+.adm .login__box { @apply grid w-full max-w-[380px] gap-5; }
+.adm .login__box img.logo { @apply h-[120px] w-[120px]; }
+.adm .alert { @apply rounded-md border border-[#e7b9b3] bg-[#f9e7e5] px-3 py-2.5 text-sm text-red-800; }
+.adm .note { @apply rounded-md border border-line bg-cream px-3 py-2.5 text-[13px]; }
+
+/* toasts, loading */
+.adm .toasts { @apply fixed bottom-4 right-4 z-50 grid gap-2; }
+.adm .toast { @apply grid min-w-60 gap-0.5 rounded-lg bg-ink px-4 py-3 text-sm text-ivory shadow-[0_8px_24px_rgba(27,21,15,.18)]; }
+.adm .toast strong { @apply font-medium text-primary; }
+.adm .toast--bad strong { @apply text-[#f3b1a8]; }
+/* the loading dots sit in the middle of the space they load into */
+.adm .loading { @apply flex min-h-[40vh] w-full items-center justify-center; }
+.adm .dots { @apply inline-flex gap-1 p-6; }
+.adm .dots i { @apply h-1.5 w-1.5 animate-pulse rounded-full bg-primary-dark; }
+.adm .dots i:nth-child(2) { animation-delay: .15s; }
+.adm .dots i:nth-child(3) { animation-delay: .3s; }
+
+/* the react-datepicker calendar (components/ui/date-picker.tsx) in the brand colours */
+.adm-datepicker { z-index: 50; }
+.adm-datepicker .react-datepicker { @apply rounded-md border-line font-sans text-ink shadow-[0_8px_24px_rgba(27,21,15,.12)]; }
+.adm-datepicker .react-datepicker__header { @apply border-line bg-cream; }
+.adm-datepicker .react-datepicker__current-month { @apply font-display text-base font-normal text-ink; }
+.adm-datepicker .react-datepicker__day-name { @apply text-ink; }
+.adm-datepicker .react-datepicker__day { @apply rounded-md text-ink; }
+.adm-datepicker .react-datepicker__day:hover { @apply bg-cream; }
+.adm-datepicker .react-datepicker__day--today { @apply font-semibold underline underline-offset-2; }
+.adm-datepicker .react-datepicker__day--selected,
+.adm-datepicker .react-datepicker__day--keyboard-selected { @apply bg-primary text-primary-foreground hover:bg-primary-hover; }
+.adm-datepicker .react-datepicker__day--disabled { @apply text-ink/30 hover:bg-transparent; }
+.adm-datepicker .react-datepicker__day--outside-month { @apply text-ink/40; }
+.adm-datepicker .react-datepicker__navigation-icon::before { @apply border-ink; }

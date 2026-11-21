@@ -1,89 +1,49 @@
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
+// Brand: the logo's gold on warm ivory, espresso ink. Change a colour here and it updates everywhere.
 const config = {
-  darkMode: ["class"],
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-  ],
-  prefix: "",
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     container: {
       center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+      // side margins: 24px on phones, 48px on tablets, 120px on large screens (content 1200px wide at 1440)
+      padding: { DEFAULT: "1.5rem", md: "3rem", xl: "7.5rem" },
+      screens: { sm: "640px", md: "768px", lg: "1024px", xl: "1280px", "2xl": "1440px" },
     },
     extend: {
-      fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"], 
-        heading: ["var(--font-heading)", "system-ui", "sans-serif"],
-      },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "#c8a048", // logo gold: buttons, accents
+          hover: "#b98f3a",
+          dark: "#7d5a1e", // deep gold: small text, focus rings
+          foreground: "#1b150f", // text on gold
         },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
+        ink: "#1b150f", // text and the espresso footer
+        ivory: "#fbf8f3", // page background
+        cream: "#f4ede2", // panels
+        muted: "#5c5349", // secondary text
+        line: "#e4dccf", // hairlines
+        espresso: { DEFAULT: "#1b150f", soft: "#2a231b", muted: "#b9afa2" },
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      fontFamily: {
+        display: ["var(--font-display)", "Georgia", "serif"],
+        sans: ["var(--font-text)", "system-ui", "sans-serif"],
       },
+      maxWidth: { prose: "62ch" },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        "fade-in-up": {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
+        "fade-up": { "0%": { opacity: "0", transform: "translateY(14px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
+        "fade-in": { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
+        "spin-slow": { to: { transform: "rotate(360deg)" } },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in-up": "fade-in-up 0.5s ease-out",
+        "fade-up": "fade-up .8s cubic-bezier(.22,1,.36,1) both",
+        "fade-in": "fade-in 1.1s ease both",
+        "spin-slow": "spin-slow 30s linear infinite",
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require('@tailwindcss/typography')],
+  plugins: [animate], // open and close animations for the shadcn Select (admin)
 } satisfies Config;
 
 export default config;

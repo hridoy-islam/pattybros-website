@@ -2,71 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
+/* LashesByZee: colours and fonts live in tailwind.config.ts. A few repeated pieces are defined once here
+   as component classes (buttons, links, headings); everything else is Tailwind classes in the JSX. */
+
 @layer base {
-  :root {
-    --background: 0 0% 0%;
-    --foreground: 222.2 84% 4.9%;
-
-    --primary: 39 85% 51%;
-    --primary-foreground: 359 88% 59%;
-
-    --secondary: 0 0% 26%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 32 94% 50%;
-    --radius: 1rem;
-  }
-
-  .dark {
-    --foreground: 210 40% 98%;
-    --background: 0 0% 0%;
-    --primary: 39 85% 51%;
-    --primary-foreground: 359 88% 59%;
-    --secondary: 0 0% 26%;
-  }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-ivory font-sans text-ink antialiased; }
+  h1, h2, h3 { @apply font-display font-normal tracking-tight; }
+  :focus-visible { @apply outline outline-2 outline-offset-2 outline-primary-dark; }
+  ::selection { @apply bg-primary text-primary-foreground; }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer components {
+  /* buttons */
+  .btn {
+    @apply inline-flex h-12 items-center justify-center gap-2 px-7 text-[15px] font-medium transition-[background-color,border-color,color,transform] duration-200 active:translate-y-px disabled:cursor-default disabled:opacity-60;
+  }
+  .btn-primary { @apply btn bg-primary text-primary-foreground hover:bg-primary-hover; }
+  .btn-secondary { @apply btn border border-ink/25 bg-ivory text-ink hover:border-primary hover:bg-primary hover:text-primary-foreground; }
+  .btn-dark { @apply btn bg-ink text-ivory hover:bg-espresso-soft; }
+
+  /* a text link with an arrow; the words turn gold on hover.
+     inline-block (not flex) so there is one underline, under the words only; the arrow sits outside it */
+  .link-arrow {
+    @apply inline-block font-medium text-ink underline decoration-ink/30 underline-offset-[6px] transition-colors duration-200 hover:text-primary hover:decoration-primary;
+  }
+  .link-arrow::after { content: "\2192"; @apply ml-2 inline-block no-underline transition-transform duration-200; }
+  .link-arrow:hover::after { @apply translate-x-[3px]; }
+
+  /* type */
+  .eyebrow { @apply inline-flex items-center gap-3 text-[13px] font-medium uppercase tracking-[0.14em] text-primary-dark; }
+  .eyebrow::before { content: ""; @apply h-px w-10 bg-primary; }
+  .h2 { @apply font-display text-[32px] leading-[1.12] md:text-[42px]; }
+  .lead { @apply text-[17px] leading-[1.7] md:text-lg; }
+
+  /* the spacing between page sections */
+  .section { @apply py-14 md:py-20; }
+
+  /* a photograph that zooms a little inside its frame on hover (put `group` on the link around it) */
+  .zoom-img { @apply h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]; }
+
+  /* gallery set chapters (components/gallery/SetChapters.tsx): the pinned scroll version runs only
+     when motion is welcome and the screen is at least 600px tall; otherwise the plain list shows */
+  .chapters-live { display: none; }
+  @media (prefers-reduced-motion: no-preference) and (min-height: 600px) {
+    .chapters-live { display: block; }
+    .chapters-rest { display: none; }
   }
 
-  body {
-    @apply bg-background text-foreground antialiased font-sans;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    @apply font-heading tracking-tight;
-  }
-
-  section {
-    @apply py-20 md:py-32;
-  }
-
-  .horizontal-scrollbar::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .horizontal-scrollbar::-webkit-scrollbar-track {
-    @apply bg-slate-200 rounded-full;
-  }
-
-  .horizontal-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-primary rounded-full;
-  }
+  /* form fields (public site) */
+  .field-label { @apply mb-2 block text-sm font-medium; }
+  .field-input { @apply h-12 w-full border border-line bg-white px-4 text-base text-ink outline-none transition focus:border-ink; }
+  .field-error { @apply mt-1.5 text-sm font-medium text-red-800; }
 }

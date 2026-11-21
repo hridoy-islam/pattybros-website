@@ -1,31 +1,25 @@
-"use client";
+import Header from "@/components/public/Header";
+import SiteFooter from "@/components/public/SiteFooter";
+import ActionBar from "@/components/public/ActionBar";
+import Hero from "@/components/home/Hero";
+import Visit from "@/components/home/Visit";
+import PopularSets from "@/components/home/PopularSets";
+import Welcome from "@/components/home/Welcome";
+import MeetZee from "@/components/home/MeetZee";
 
-import { useEffect } from "react";
-import { homeContent } from "@/utils/content";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "@/redux/store";  
-import SmoothScroll from "@/components/shared/smooth-scroll";
-import Hero from "@/components/home/hero";
-import AboutStats from "@/components/home/AboutStats";
-import ChefSection from "@/components/home/ChefSection";
-import GalleryInfoSection from "@/components/home/GalleryInfoSection";
-import MenuSection from "@/components/home/MenuSection";
-import FAQ from "@/components/home/FAQ";
-
-export default function Home() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+export default function HomePage() {
   return (
-    <SmoothScroll>
-      <main className="flex flex-col min-h-screen">
+    <>
+      <Header />
+      <main id="top">
         <Hero />
-        <AboutStats />
-        <MenuSection />
-        <GalleryInfoSection />
-        <FAQ />
+        <Visit />
+        <PopularSets />
+        <Welcome />
+        <MeetZee />
       </main>
-    </SmoothScroll>
+      <SiteFooter close={{ title: "Book your lash appointment", line: "Full sets from £45. A £15 deposit holds your time." }} />
+      <ActionBar />
+    </>
   );
 }

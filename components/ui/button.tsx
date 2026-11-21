@@ -1,66 +1,42 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/utils/utils";
+import { cn } from "@/lib/utils";
 
+// shadcn/ui Button, in the brand colours (tailwind.config.ts)
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-dark focus-visible:ring-offset-2 active:translate-y-px disabled:pointer-events-none disabled:opacity-55 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default:
-          "relative overflow-hidden rounded-full bg-primary-foreground text-white hover:bg-primary-foreground shadow-md " +
-          // The Glaze Effect Logic
-          "after:absolute after:inset-0 after:z-10 after:translate-x-[-150%] after:bg-gradient-to-r after:from-transparent after:via-white after:to-transparent after:transition-transform after:duration-500 hover:after:translate-x-[150%]",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "text-white border border-gray-500 bg-background hover:bg-background/90 hover:text-white",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        // Adding the 'cyberpeers' brand button style here for global use
-        brand:
-          "text-white border-none bg-primary hover:bg-primary/90 hover:text-white",
+        default: "bg-primary text-primary-foreground hover:bg-primary-hover",
+        dark: "bg-ink text-ivory hover:bg-espresso-soft",
+        outline: "border border-line bg-white text-ink hover:border-primary hover:bg-primary",
+        destructive: "border border-red-200 bg-white text-red-800 hover:bg-red-50",
+        ghost: "text-ink hover:bg-cream",
+        link: "text-ink underline underline-offset-4 hover:text-primary-dark",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        xl: "h-14 px-8 text-base", // For Hero buttons
+        default: "h-10 px-4",
+        sm: "h-8 px-3 text-[13px]",
+        lg: "h-11 px-6",
         icon: "h-10 w-10",
       },
     },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  },
+    defaultVariants: { variant: "default", size: "default" },
+  }
 );
 
 export interface ButtonProps
-  extends
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
-    return (
-      <Comp
-        className={cn(
-          "font-heading", // Add this line to apply Archivo Black font
-          buttonVariants({ variant, size, className })
-        )}
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, variant, size, asChild = false, ...props }, ref) => {
+  const Comp = asChild ? Slot : "button";
+  return <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
+});
 Button.displayName = "Button";
 
 export { Button, buttonVariants };
