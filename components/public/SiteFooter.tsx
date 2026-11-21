@@ -26,6 +26,8 @@ const columns = [
   },
 ];
 
+
+
 const footerLink =
   "inline-flex min-h-9 items-center text-base text-ivory transition-colors hover:text-primary";
 
